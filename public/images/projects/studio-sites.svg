@@ -1,0 +1,16 @@
+<svg width="1200" height="750" viewBox="0 0 1200 750" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="750" rx="48" fill="#FFFFFF"/>
+  <rect x="92" y="90" width="1016" height="570" rx="40" fill="#F7F8F6" stroke="#E7ECE2" stroke-width="4"/>
+  <rect x="144" y="144" width="276" height="462" rx="28" fill="#FFFFFF"/>
+  <rect x="470" y="144" width="586" height="184" rx="28" fill="#0B0D10"/>
+  <rect x="470" y="368" width="278" height="238" rx="28" fill="#FFFFFF"/>
+  <rect x="778" y="368" width="278" height="238" rx="28" fill="#FFFFFF"/>
+  <rect x="184" y="188" width="196" height="20" rx="10" fill="#0B0D10"/>
+  <rect x="184" y="226" width="156" height="18" rx="9" fill="#CBD5C6"/>
+  <rect x="520" y="190" width="224" height="22" rx="11" fill="#7CFF6B"/>
+  <rect x="520" y="234" width="416" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.56"/>
+  <rect x="512" y="420" width="194" height="20" rx="10" fill="#DFFFD8"/>
+  <rect x="820" y="420" width="194" height="20" rx="10" fill="#DFFFD8"/>
+  <path d="M530 542C567 484 619 454 687 454" stroke="#0B0D10" stroke-width="10" stroke-linecap="round"/>
+  <path d="M840 542C877 484 929 454 997 454" stroke="#0B0D10" stroke-width="10" stroke-linecap="round"/>
+</svg>
