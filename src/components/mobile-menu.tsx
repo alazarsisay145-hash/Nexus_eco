@@ -23,10 +23,6 @@ export function MobileMenu() {
   const [open, setOpen] = React.useState(false);
   const pathname = usePathname();
 
-  React.useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>

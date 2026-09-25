@@ -55,7 +55,7 @@ export default async function OpenGraphImage() {
               lineHeight: 1.05,
             }}
           >
-            Build the future with {siteConfig.name}.
+            {`Build the future with ${siteConfig.name}.`}
           </div>
           <div style={{ color: "#7CFF6B", fontSize: 36, fontWeight: 600 }}>
             {siteConfig.tagline}

@@ -1,5 +1,4 @@
 import {
-  BookOpen,
   Briefcase,
   Code2,
   Globe,
