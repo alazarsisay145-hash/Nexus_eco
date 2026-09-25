@@ -34,20 +34,29 @@ export default function OpenGraphImage() {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: "88px",
-              height: "88px",
-              borderRadius: "28px",
-              background: "#0B0D10",
-              color: "#7CFF6B",
-              fontSize: "38px",
-              fontWeight: 800,
+              gap: "18px",
             }}
           >
-            N
+            <div
+              style={{
+                width: "28px",
+                height: "28px",
+                borderRadius: "9999px",
+                background: "#2F22FF",
+              }}
+            />
+            <div
+              style={{
+                width: "34px",
+                height: "92px",
+                borderRadius: "9999px",
+                background: "#2F22FF",
+                transform: "rotate(30deg)",
+              }}
+            />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: "26px", letterSpacing: "0.35em", fontWeight: 700 }}>NEXUS</div>
+            <div style={{ fontSize: "56px", letterSpacing: "-0.04em", fontWeight: 500 }}>NEXUS</div>
             <div style={{ fontSize: "18px", color: "#47515C" }}>Build. Connect. Access. Grow.</div>
           </div>
         </div>
