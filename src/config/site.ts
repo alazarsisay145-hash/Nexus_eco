@@ -16,13 +16,14 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/nexus.ecosystem",
   },
   primaryNav: [
-    { title: "Solutions", href: "/solutions" },
+    { title: "Home", href: "/" },
+    { title: "About", href: "/about" },
     { title: "AI Access", href: "/ai-access" },
     { title: "Community", href: "/community" },
     { title: "Learn", href: "/learn" },
-    { title: "Opportunities", href: "/opportunities" },
     { title: "Labs", href: "/labs" },
-    { title: "About", href: "/about" },
+    { title: "Opportunities", href: "/opportunities" },
+    { title: "Solutions", href: "/solutions" },
     { title: "Contact", href: "/contact" },
   ],
   audience: [

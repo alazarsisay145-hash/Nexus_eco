@@ -62,19 +62,19 @@ export default function AboutPage() {
           {beliefs.map((belief) => {
             const Icon = belief.icon;
             return (
-              <article key={belief.title} className="rounded-[1.75rem] border border-[#E7ECE2] bg-white p-6 shadow-[0_12px_40px_rgba(11,13,16,0.04)]">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F2FFEE] text-[#2D7A24]">
+              <article key={belief.title} className="glass-panel p-6">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#0B0D10]">{belief.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#5E6673]">{belief.description}</p>
+                <h3 className="text-xl font-semibold text-white">{belief.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{belief.description}</p>
               </article>
             );
           })}
         </div>
-        <div className="mt-12 rounded-[2rem] border border-[#E7ECE2] bg-[#F7F8F6] p-8">
-          <h2 className="text-2xl font-semibold text-[#0B0D10]">Who we serve</h2>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-[#5E6673]">
+        <div className="glass-panel-soft mt-12 p-8">
+          <h2 className="text-2xl font-semibold text-white">Who we serve</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
             NEXUS serves emerging talent, youth-led initiatives, startups, education communities, and organizations that want a clearer path into digital product creation and technology growth.
           </p>
         </div>

@@ -22,8 +22,8 @@ export function SectionHeader({
           {eyebrow}
         </Badge>
       ) : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-[#0B0D10] sm:text-4xl">{title}</h2>
-      <p className="mt-4 text-base leading-8 text-[#5E6673] sm:text-lg">{description}</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
+      <p className="mt-4 text-base leading-8 text-slate-300 sm:text-lg">{description}</p>
       {children ? <div className="mt-5">{children}</div> : null}
     </div>
   );

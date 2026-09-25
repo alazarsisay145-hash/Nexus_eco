@@ -62,9 +62,9 @@ export default function AIAccessPage() {
             title="A professional access layer for modern AI workflows"
             description="AI Access is designed for young professionals, students, startups, and small teams that want clear entry points into high-value AI tools without needing their own complicated infrastructure."
           />
-          <div className="rounded-[2rem] border border-[#E7ECE2] bg-[#F7F8F6] p-8">
-            <p className="text-sm font-semibold tracking-[0.24em] text-[#4B8D43] uppercase">Who it is for</p>
-            <ul className="mt-5 space-y-3 text-sm leading-7 text-[#5E6673]">
+          <div className="glass-panel-soft p-8">
+            <p className="text-sm font-semibold tracking-[0.24em] text-[#7CFF6B] uppercase">Who it is for</p>
+            <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-300">
               {siteConfig.audience.map((item) => (
                 <li key={item} className="flex gap-3">
                   <span className="mt-2 h-2 w-2 rounded-full bg-[#7CFF6B]" aria-hidden="true" />
@@ -76,7 +76,7 @@ export default function AIAccessPage() {
         </div>
       </section>
 
-      <section className="bg-[#F7F8F6] py-20">
+      <section className="section-divider py-20">
         <div className="section-shell">
           <SectionHeader
             eyebrow="Benefits"
@@ -87,12 +87,12 @@ export default function AIAccessPage() {
             {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
-                <article key={benefit.title} className="rounded-[1.75rem] border border-[#E7ECE2] bg-white p-6 shadow-[0_12px_40px_rgba(11,13,16,0.04)]">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F2FFEE] text-[#2D7A24]">
+                <article key={benefit.title} className="glass-panel p-6">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-semibold text-[#0B0D10]">{benefit.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[#5E6673]">{benefit.description}</p>
+                  <h3 className="text-xl font-semibold text-white">{benefit.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">{benefit.description}</p>
                 </article>
               );
             })}
@@ -120,18 +120,18 @@ export default function AIAccessPage() {
         </div>
       </section>
 
-      <section className="bg-[#F7F8F6] py-20">
+      <section className="section-divider py-20">
         <div className="section-shell grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div className="rounded-[2rem] border border-[#E7ECE2] bg-white p-8 shadow-[0_12px_40px_rgba(11,13,16,0.04)]">
-            <p className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.24em] text-[#4B8D43] uppercase">
+          <div className="glass-panel p-8">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.24em] text-[#7CFF6B] uppercase">
               <CircleHelp className="h-4 w-4" />
               How access works
             </p>
-            <ol className="mt-6 space-y-4 text-sm leading-7 text-[#5E6673]">
-              <li><strong className="text-[#0B0D10]">1.</strong> Choose a plan that matches your stage and workflow.</li>
-              <li><strong className="text-[#0B0D10]">2.</strong> Use the external AI Access link to continue with the current access process.</li>
-              <li><strong className="text-[#0B0D10]">3.</strong> Receive onboarding, resources, and recommended tool pathways.</li>
-              <li><strong className="text-[#0B0D10]">4.</strong> Keep learning through community support and evolving guidance.</li>
+            <ol className="mt-6 space-y-4 text-sm leading-7 text-slate-300">
+              <li><strong className="text-white">1.</strong> Choose a plan that matches your stage and workflow.</li>
+              <li><strong className="text-white">2.</strong> Use the external AI Access link to continue with the current access process.</li>
+              <li><strong className="text-white">3.</strong> Receive onboarding, resources, and recommended tool pathways.</li>
+              <li><strong className="text-white">4.</strong> Keep learning through community support and evolving guidance.</li>
             </ol>
           </div>
           <div>

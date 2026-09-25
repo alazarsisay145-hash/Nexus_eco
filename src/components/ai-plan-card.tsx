@@ -8,26 +8,26 @@ export function AIPlanCard({ plan }: { plan: AIPlan }) {
   return (
     <article
       className={[
-        "flex h-full flex-col rounded-[1.75rem] border p-6 shadow-[0_12px_40px_rgba(11,13,16,0.04)]",
-        plan.featured ? "border-[#C9F8C0] bg-[#FBFFF9]" : "border-[#E7ECE2] bg-white",
+        "flex h-full flex-col rounded-[1.75rem] border p-6 shadow-[0_24px_70px_rgba(5,16,29,0.28)] backdrop-blur-xl",
+        plan.featured ? "border-[#7CFF6B]/40 bg-[#0A1A14]/88" : "border-white/10 bg-white/8",
       ].join(" ")}
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-xl font-semibold text-[#0B0D10]">{plan.name}</h3>
-          <p className="mt-2 text-sm text-[#5E6673]">{plan.audience}</p>
+          <h3 className="text-xl font-semibold text-white">{plan.name}</h3>
+          <p className="mt-2 text-sm text-slate-300">{plan.audience}</p>
         </div>
         {plan.highlight ? <Badge variant="accent">{plan.highlight}</Badge> : null}
       </div>
       <div className="mt-6 flex items-baseline gap-1">
-        <span className="text-4xl font-semibold tracking-tight text-[#0B0D10]">{plan.price}</span>
-        <span className="text-sm text-[#6B7280]">{plan.cadence}</span>
+        <span className="text-4xl font-semibold tracking-tight text-white">{plan.price}</span>
+        <span className="text-sm text-slate-400">{plan.cadence}</span>
       </div>
-      <p className="mt-4 text-sm leading-7 text-[#5E6673]">{plan.description}</p>
-      <ul className="mt-6 space-y-3 text-sm text-[#49515D]">
+      <p className="mt-4 text-sm leading-7 text-slate-300">{plan.description}</p>
+      <ul className="mt-6 space-y-3 text-sm text-slate-300">
         {plan.features.map((feature) => (
           <li key={feature} className="flex gap-3">
-            <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#EAFDE5] text-[#2D7A24]">
+            <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#7CFF6B]/14 text-[#7CFF6B]">
               <Check className="h-3.5 w-3.5" aria-hidden="true" />
             </span>
             <span>{feature}</span>
