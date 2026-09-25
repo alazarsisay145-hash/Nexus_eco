@@ -47,7 +47,7 @@ function SheetContent({
         {...props}
       >
         {children}
-      <Dialog.Close className="absolute top-4 right-4 rounded-full p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B] focus-visible:ring-offset-2">
+      <Dialog.Close className="absolute top-4 right-4 rounded-full p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111F]">
           <X className="h-5 w-5" aria-hidden="true" />
           <span className="sr-only">Close menu</span>
         </Dialog.Close>

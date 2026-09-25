@@ -53,11 +53,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <div className="min-h-screen">
+        <div className="page-shell page-grid min-h-screen">
           <Navbar />
-          <div className="page-shell page-grid">
-            <main id="main-content">{children}</main>
-          </div>
+          <main id="main-content">{children}</main>
           <Footer />
         </div>
       </body>
