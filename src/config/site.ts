@@ -1,0 +1,46 @@
+export const siteConfig = {
+  name: "NEXUS",
+  tagline: "Build. Connect. Access. Grow.",
+  description:
+    "NEXUS is a youth-focused technology ecosystem connecting software delivery, AI access, developer community, learning, opportunities, and labs in one premium platform.",
+  url: "https://nexus.eco",
+  email: "hello@nexus.eco",
+  aiAccessUrl: "https://access.nexus.eco",
+  communityUrl: "https://community.nexus.eco",
+  whatsappUrl: "https://wa.me/251911000000",
+  telegramUrl: "https://t.me/NexusEcosystem",
+  socialUrls: {
+    github: "https://github.com/alazarsisay145-hash/Nexus_eco",
+    linkedin: "https://www.linkedin.com/company/nexus-ecosystem",
+    x: "https://x.com/nexus_ecosystem",
+    instagram: "https://www.instagram.com/nexus.ecosystem",
+  },
+  primaryNav: [
+    { title: "Solutions", href: "/solutions" },
+    { title: "AI Access", href: "/ai-access" },
+    { title: "Community", href: "/community" },
+    { title: "Learn", href: "/learn" },
+    { title: "Opportunities", href: "/opportunities" },
+    { title: "Labs", href: "/labs" },
+    { title: "About", href: "/about" },
+    { title: "Contact", href: "/contact" },
+  ],
+  audience: [
+    "Students and young founders building digital products",
+    "Teams that need practical software and automation support",
+    "Aspiring developers looking for community, guidance, and opportunities",
+  ],
+  aiTools: [
+    "ChatGPT",
+    "Claude",
+    "Gemini",
+    "GitHub Copilot",
+    "Perplexity",
+    "NotebookLM",
+  ],
+  metrics: [
+    { value: "6", label: "ecosystem pillars" },
+    { value: "10+", label: "community programs and formats" },
+    { value: "4", label: "lab project stages from concept to live" },
+  ],
+} as const;
