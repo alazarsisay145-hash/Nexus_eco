@@ -31,7 +31,9 @@ export function Navbar() {
             <Link href="/contact">Contact Us</Link>
           </Button>
           <Button asChild variant="accent">
-            <Link href="/ai-access">Get AI Access</Link>
+            <a href={siteConfig.communityUrl} target="_blank" rel="noreferrer">
+              Join NEXUS
+            </a>
           </Button>
         </div>
         <MobileMenu />

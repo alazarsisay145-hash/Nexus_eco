@@ -2,7 +2,8 @@ export default function Loading() {
   const skeletonCards = ["audience", "access", "community"];
 
   return (
-    <section className="section-shell py-20 sm:py-24">
+    <section className="section-shell py-20 sm:py-24" role="status" aria-live="polite" aria-busy="true">
+      <p className="sr-only">Loading Nexus content.</p>
       <div className="glass-panel section-glow overflow-hidden p-8 sm:p-10">
         <div className="h-4 w-32 animate-pulse rounded-full bg-white/15" />
         <div className="mt-6 h-14 max-w-3xl animate-pulse rounded-[2rem] bg-white/12" />

@@ -52,10 +52,12 @@ export function MobileMenu() {
         </nav>
         <div className="mt-auto grid gap-3 pt-6">
           <Button asChild variant="accent" size="lg">
-            <Link href="/ai-access">Get AI Access</Link>
+            <a href={siteConfig.communityUrl} target="_blank" rel="noreferrer">
+              Join NEXUS
+            </a>
           </Button>
           <Button asChild variant="outline" size="lg" className="border-white/12 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-            <Link href="/community">Join Community</Link>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
       </SheetContent>
