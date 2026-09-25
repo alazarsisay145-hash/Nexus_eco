@@ -1,4 +1,6 @@
 export default function Loading() {
+  const skeletonCards = ["audience", "access", "community"];
+
   return (
     <section className="section-shell py-20 sm:py-24">
       <div className="glass-panel section-glow overflow-hidden p-8 sm:p-10">
@@ -11,8 +13,8 @@ export default function Loading() {
         </div>
       </div>
       <div className="mt-8 grid gap-6 md:grid-cols-3">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div key={index} className="glass-panel-soft h-52 animate-pulse" />
+        {skeletonCards.map((card) => (
+          <div key={card} className="glass-panel-soft h-52 animate-pulse" />
         ))}
       </div>
     </section>

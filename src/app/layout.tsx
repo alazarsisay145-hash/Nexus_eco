@@ -55,9 +55,9 @@ export default function RootLayout({
         </a>
         <div className="min-h-screen">
           <Navbar />
-          <main id="main-content" className="page-shell page-grid">
-            {children}
-          </main>
+          <div className="page-shell page-grid">
+            <main id="main-content">{children}</main>
+          </div>
           <Footer />
         </div>
       </body>
