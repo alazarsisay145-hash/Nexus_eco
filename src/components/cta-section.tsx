@@ -22,7 +22,7 @@ export function CTASection({
 
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl rounded-[2rem] bg-[#0B0D10] px-6 py-12 text-white sm:px-10 lg:px-12 lg:py-14">
+      <div className="section-glow mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-[#06101D]/90 px-6 py-12 text-white shadow-[0_28px_80px_rgba(0,0,0,0.28)] sm:px-10 lg:px-12 lg:py-14">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-sm font-semibold tracking-[0.24em] text-[#7CFF6B] uppercase">Final CTA</p>

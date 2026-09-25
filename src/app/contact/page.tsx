@@ -72,19 +72,19 @@ export default function ContactPage() {
                     href={item.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noreferrer" : undefined}
-                    className="rounded-[1.5rem] border border-[#E7ECE2] bg-white p-6 shadow-[0_12px_40px_rgba(11,13,16,0.04)] transition-colors hover:bg-[#F7F8F6]"
+                    className="glass-panel p-6 transition-colors hover:bg-white/12"
                   >
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F2FFEE] text-[#2D7A24]">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
                       <Icon className="h-6 w-6" />
                     </div>
-                    <h2 className="mt-4 text-xl font-semibold text-[#0B0D10]">{item.title}</h2>
-                    <p className="mt-2 text-sm leading-7 text-[#5E6673]">{item.value}</p>
+                    <h2 className="mt-4 text-xl font-semibold text-white">{item.title}</h2>
+                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.value}</p>
                   </a>
                 );
               })}
             </div>
           </div>
-          <div className="rounded-[2rem] border border-[#E7ECE2] bg-[#F7F8F6] p-8">
+          <div className="glass-panel-soft p-8">
             <SectionHeader
               eyebrow="Social links"
               title="Follow NEXUS across the platforms where ideas travel"
@@ -99,12 +99,12 @@ export default function ContactPage() {
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-[1.5rem] border border-[#E7ECE2] bg-white p-5 transition-colors hover:bg-[#FCFCFB]"
+                    className="glass-panel p-5 transition-colors hover:bg-white/12"
                   >
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#0B0D10] text-white">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-[#07111F]">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <p className="mt-4 text-base font-semibold text-[#0B0D10]">{item.title}</p>
+                    <p className="mt-4 text-base font-semibold text-white">{item.title}</p>
                   </a>
                 );
               })}

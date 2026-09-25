@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0b0d10;
+  --background: #07111f;
+  --foreground: #f5f7fb;
 }
 
 @theme inline {
@@ -15,7 +15,9 @@ html {
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at top, rgba(109, 255, 148, 0.14), transparent 28%),
+    linear-gradient(180deg, #07111f 0%, #081526 48%, #05101d 100%);
   color: var(--foreground);
   font-family: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
 }
@@ -47,6 +49,36 @@ body {
 
 @utility section-shell {
   @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility page-shell {
+  @apply relative overflow-hidden;
+}
+
+@utility page-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-position: center;
+  background-size: 44px 44px;
+}
+
+@utility section-divider {
+  @apply border-t border-white/[0.08];
+}
+
+@utility glass-panel {
+  @apply rounded-[1.75rem] border border-white/12 bg-white/[0.08] shadow-[0_24px_80px_rgba(5,16,29,0.38)] backdrop-blur-xl;
+}
+
+@utility glass-panel-soft {
+  @apply rounded-[1.5rem] border border-white/10 bg-white/[0.06] shadow-[0_18px_60px_rgba(5,16,29,0.28)] backdrop-blur-lg;
+}
+
+@utility section-glow {
+  background:
+    radial-gradient(circle at top left, rgba(124, 255, 107, 0.12), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(47, 34, 255, 0.12), transparent 28%);
 }
 
 @keyframes accordion-down {

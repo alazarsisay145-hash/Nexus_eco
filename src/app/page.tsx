@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { ArrowRight, BriefcaseBusiness, Code2, GraduationCap, Lightbulb, Sparkles, Users } from "lucide-react";
 
 import { AIPlanCard } from "@/components/ai-plan-card";
@@ -20,6 +21,14 @@ import { generalFaqs } from "@/data/faqs";
 import { opportunities } from "@/data/opportunities";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
+import { buildMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Home",
+  description:
+    "Discover Nexus, a youth and campus social ecosystem connecting AI access, community, learning, labs, opportunities, and software solutions.",
+  path: "/",
+});
 
 const introFeatures = [
   {
@@ -70,11 +79,11 @@ export default function Home() {
   return (
     <>
       <Hero
-        eyebrow="Youth-focused technology ecosystem"
-        title="Build the future with NEXUS."
-        description="Software solutions, AI access, developer community and opportunities—all connected in one ecosystem."
-        primaryLabel="Explore NEXUS"
-        primaryHref="#introduction"
+        eyebrow="Youth and campus social ecosystem"
+        title="NEXUS connects ambitious youth to AI access, community, and real campus momentum."
+        description="Discover a polished ecosystem for students, builders, creators, and teams—where AI access, learning, labs, software solutions, and opportunities all move together."
+        primaryLabel="Explore AI Access"
+        primaryHref="/ai-access"
         secondaryLabel="Join the Community"
         secondaryHref="/community"
         stats={siteConfig.metrics.map((metric) => ({ ...metric }))}
@@ -99,7 +108,7 @@ export default function Home() {
           title="Products, platforms, and digital systems designed to help organizations grow"
           description="NEXUS delivers focused software services that combine strong UX, modern engineering, and adaptable architecture without unnecessary complexity."
         >
-          <Button asChild variant="ghost" className="px-0 text-sm text-[#0B0D10] hover:bg-transparent hover:text-[#2D7A24]">
+          <Button asChild variant="ghost" className="px-0 text-sm text-white hover:bg-transparent hover:text-[#7CFF6B]">
             <Link href="/solutions">
               View all solutions
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -113,7 +122,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F7F8F6] py-20">
+      <section className="section-divider py-20">
         <div className="section-shell">
           <SectionHeader
             eyebrow="AI Access"
@@ -145,13 +154,13 @@ export default function Home() {
           {ecosystemSections.map((item) => {
             const Icon = item.icon;
             return (
-              <article key={item.title} className="rounded-[1.75rem] border border-[#E7ECE2] bg-white p-6 shadow-[0_12px_40px_rgba(11,13,16,0.04)]">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F2FFEE] text-[#2D7A24]">
+              <article key={item.title} className="glass-panel p-6">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#0B0D10]">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#5E6673]">{item.description}</p>
-                <Button asChild variant="ghost" className="mt-5 px-0 hover:bg-transparent">
+                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+                <Button asChild variant="ghost" className="mt-5 px-0 text-white hover:bg-transparent hover:text-[#7CFF6B]">
                   <Link href={item.href}>
                     Explore
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -163,7 +172,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F7F8F6] py-20">
+      <section className="section-divider py-20">
         <div className="section-shell">
           <SectionHeader
             eyebrow="Featured resources"
@@ -191,7 +200,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F7F8F6] py-20">
+      <section className="section-divider py-20">
         <div className="section-shell">
           <SectionHeader
             eyebrow="NEXUS Labs"

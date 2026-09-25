@@ -41,13 +41,13 @@ function SheetContent({
       <SheetOverlay />
       <Dialog.Content
         className={cn(
-          "fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col gap-6 border-l border-[#E7ECE2] bg-white p-6 shadow-xl outline-none",
+        "fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col gap-6 border-l border-white/10 bg-[#07111F] p-6 shadow-xl outline-none",
           className,
         )}
         {...props}
       >
         {children}
-        <Dialog.Close className="absolute top-4 right-4 rounded-full p-2 text-[#6B7280] transition-colors hover:bg-[#F7F8F6] hover:text-[#0B0D10] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B] focus-visible:ring-offset-2">
+      <Dialog.Close className="absolute top-4 right-4 rounded-full p-2 text-slate-400 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07111F]">
           <X className="h-5 w-5" aria-hidden="true" />
           <span className="sr-only">Close menu</span>
         </Dialog.Close>
@@ -61,14 +61,14 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function SheetTitle({ className, ...props }: React.ComponentProps<typeof Dialog.Title>) {
-  return <Dialog.Title className={cn("text-lg font-semibold text-[#0B0D10]", className)} {...props} />;
+  return <Dialog.Title className={cn("text-lg font-semibold text-white", className)} {...props} />;
 }
 
 function SheetDescription({
   className,
   ...props
 }: React.ComponentProps<typeof Dialog.Description>) {
-  return <Dialog.Description className={cn("text-sm text-[#6B7280]", className)} {...props} />;
+  return <Dialog.Description className={cn("text-sm text-slate-400", className)} {...props} />;
 }
 
 export {
