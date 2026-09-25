@@ -13,7 +13,7 @@ const statusVariant = {
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/8 shadow-[0_24px_70px_rgba(5,16,29,0.3)] backdrop-blur-xl">
+    <article className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.08] shadow-[0_24px_70px_rgba(5,16,29,0.3)] backdrop-blur-xl">
       <div className="relative aspect-[16/10] border-b border-white/10 bg-[#0D1A2B]">
         <Image src={project.image} alt={project.imageAlt} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />
       </div>

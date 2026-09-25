@@ -9,7 +9,7 @@ export function AIPlanCard({ plan }: { plan: AIPlan }) {
     <article
       className={[
         "flex h-full flex-col rounded-[1.75rem] border p-6 shadow-[0_24px_70px_rgba(5,16,29,0.28)] backdrop-blur-xl",
-        plan.featured ? "border-[#7CFF6B]/40 bg-[#0A1A14]/88" : "border-white/10 bg-white/8",
+        plan.featured ? "border-[#7CFF6B]/40 bg-[#0A1A14]/88" : "border-white/10 bg-white/[0.08]",
       ].join(" ")}
     >
       <div className="flex items-start justify-between gap-4">

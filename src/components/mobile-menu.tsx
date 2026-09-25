@@ -42,7 +42,7 @@ export function MobileMenu() {
                   "rounded-2xl px-4 py-3 text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7CFF6B]",
                   item.href === "/ai-access"
                     ? "bg-white/10 text-white hover:bg-white/15"
-                    : "text-slate-100 hover:bg-white/6",
+                    : "text-slate-100 hover:bg-white/10",
                 ].join(" ")}
               >
                 {item.title}

@@ -19,7 +19,7 @@ export function Navbar() {
                 "rounded-full px-3 py-2 text-sm font-medium transition-all",
                 item.href === "/ai-access"
                   ? "bg-white/10 text-white shadow-[0_12px_30px_rgba(124,255,107,0.12)] hover:bg-white/15"
-                  : "text-slate-300 hover:bg-white/8 hover:text-white",
+                  : "text-slate-300 hover:bg-white/10 hover:text-white",
               ].join(" ")}
             >
               {item.title}

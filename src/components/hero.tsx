@@ -27,7 +27,7 @@ export function Hero({
     secondaryHref?.startsWith("http") || secondaryHref?.startsWith("mailto:");
 
   return (
-    <section className="relative overflow-hidden border-b border-white/8">
+    <section className="relative overflow-hidden border-b border-white/[0.08]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(124,255,107,0.22),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(47,34,255,0.18),_transparent_28%),linear-gradient(180deg,rgba(7,17,31,0.18)_0%,rgba(7,17,31,0.72)_100%)]" />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-28">
         <div>

@@ -64,15 +64,15 @@ body {
 }
 
 @utility section-divider {
-  @apply border-t border-white/8;
+  @apply border-t border-white/[0.08];
 }
 
 @utility glass-panel {
-  @apply rounded-[1.75rem] border border-white/12 bg-white/8 shadow-[0_24px_80px_rgba(5,16,29,0.38)] backdrop-blur-xl;
+  @apply rounded-[1.75rem] border border-white/12 bg-white/[0.08] shadow-[0_24px_80px_rgba(5,16,29,0.38)] backdrop-blur-xl;
 }
 
 @utility glass-panel-soft {
-  @apply rounded-[1.5rem] border border-white/10 bg-white/6 shadow-[0_18px_60px_rgba(5,16,29,0.28)] backdrop-blur-lg;
+  @apply rounded-[1.5rem] border border-white/10 bg-white/[0.06] shadow-[0_18px_60px_rgba(5,16,29,0.28)] backdrop-blur-lg;
 }
 
 @utility section-glow {

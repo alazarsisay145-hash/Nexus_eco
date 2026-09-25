@@ -13,7 +13,7 @@ function Accordion({ ...props }: React.ComponentProps<typeof AccordionPrimitive.
 function AccordionItem({ className, ...props }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
   return (
     <AccordionPrimitive.Item
-      className={cn("rounded-3xl border border-white/10 bg-white/8 px-6 shadow-[0_18px_60px_rgba(5,16,29,0.22)] backdrop-blur-xl", className)}
+      className={cn("rounded-3xl border border-white/10 bg-white/[0.08] px-6 shadow-[0_18px_60px_rgba(5,16,29,0.22)] backdrop-blur-xl", className)}
       {...props}
     />
   );
