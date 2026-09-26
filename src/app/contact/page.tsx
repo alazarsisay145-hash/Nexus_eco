@@ -1,125 +1,194 @@
 import type { Metadata } from "next";
-import { Github, Instagram, Linkedin, Mail, MessageCircle, Send, Twitter } from "lucide-react";
+import {
+  ArrowUpRight,
+  Clock,
+  Mail,
+  MessageCircle,
+  Send,
+} from "lucide-react";
 
-import { CTASection } from "@/components/cta-section";
+import { Container } from "@/components/container";
+import { FAQ } from "@/components/faq";
 import { Hero } from "@/components/hero";
 import { SectionHeader } from "@/components/section-header";
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { buildMetadata } from "@/lib/metadata";
+import { generalFaqs } from "@/data/faqs";
 
-const contactItems = [
-  {
-    title: "Email",
-    value: siteConfig.email,
-    href: `mailto:${siteConfig.email}`,
-    icon: Mail,
-  },
-  {
-    title: "Telegram",
-    value: "Message NEXUS on Telegram",
-    href: siteConfig.telegramUrl,
-    icon: Send,
-  },
-  {
-    title: "WhatsApp",
-    value: "Chat with NEXUS on WhatsApp",
-    href: siteConfig.whatsappUrl,
-    icon: MessageCircle,
-  },
-];
-
-const socialItems = [
-  { title: "GitHub", href: siteConfig.socialUrls.github, icon: Github },
-  { title: "LinkedIn", href: siteConfig.socialUrls.linkedin, icon: Linkedin },
-  { title: "X", href: siteConfig.socialUrls.x, icon: Twitter },
-  { title: "Instagram", href: siteConfig.socialUrls.instagram, icon: Instagram },
-];
-
-export const metadata: Metadata = buildMetadata({
+export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact NEXUS through email, Telegram, WhatsApp, or social platforms for software, AI access, community, and labs inquiries.",
-  path: "/contact",
-});
+    "Get in touch with NEXUS — email, Telegram or WhatsApp. Start a project, ask about AI access or say hello.",
+};
+
+const channels = [
+  {
+    icon: Mail,
+    title: "Email",
+    description: "Best for project inquiries and partnerships.",
+    label: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+    external: false,
+  },
+  {
+    icon: Send,
+    title: "Telegram",
+    description: "Fastest response — message the team directly.",
+    label: "Message on Telegram",
+    href: siteConfig.telegramUrl,
+    external: true,
+  },
+  {
+    icon: MessageCircle,
+    title: "WhatsApp",
+    description: "Quick questions and voice notes welcome.",
+    label: "Chat on WhatsApp",
+    href: siteConfig.whatsappUrl,
+    external: true,
+  },
+];
 
 export default function ContactPage() {
   return (
     <>
       <Hero
         eyebrow="Contact"
-        title="Reach NEXUS through the channels that fit your workflow"
-        description="Whether you want to discuss a software project, AI access, community collaboration, or a NEXUS Labs concept, the contact pathways stay centralized in one config file for easy updates."
-        primaryLabel="Email NEXUS"
-        primaryHref={`mailto:${siteConfig.email}`}
-        secondaryLabel="Join NEXUS"
-        secondaryHref="/community"
+        title="Let's talk"
+        description="Start a project, ask about AI access, propose a partnership or just say hello — we read everything and reply fast."
       />
-      <section className="section-shell py-20">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div>
-            <SectionHeader
-              eyebrow="Direct contact"
-              title="Professional contact details for fast outreach"
-              description="This frontend-first site keeps contact information configurable and avoids backend form handling until it is truly needed."
-            />
-            <div className="mt-8 grid gap-4">
-              {contactItems.map((item) => {
-                const Icon = item.icon;
-                const external = item.href.startsWith("http");
-                return (
+
+      <section className="py-16 sm:py-24">
+        <Container>
+          <div className="grid gap-5 md:grid-cols-3">
+            {channels.map((channel) => {
+              const Icon = channel.icon;
+              return (
+                <div
+                  key={channel.title}
+                  className="flex flex-col rounded-2xl border bg-card p-6 transition-colors hover:border-ink/25"
+                >
+                  <div className="mb-4 flex size-11 items-center justify-center rounded-xl bg-brand-soft text-ink">
+                    <Icon className="size-5" aria-hidden="true" />
+                  </div>
+                  <h2 className="font-display text-lg font-bold tracking-tight">
+                    {channel.title}
+                  </h2>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    {channel.description}
+                  </p>
                   <a
-                    key={item.title}
-                    href={item.href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noreferrer" : undefined}
-                    className="glass-panel p-6 transition-colors hover:bg-white/12"
+                    href={channel.href}
+                    {...(channel.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    className="mt-5 inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h2 className="mt-4 text-xl font-semibold text-white">{item.title}</h2>
-                    <p className="mt-2 text-sm leading-7 text-slate-300">{item.value}</p>
+                    {channel.label}
+                    <ArrowUpRight className="size-4" aria-hidden="true" />
                   </a>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
-          <div className="glass-panel-soft p-8">
-            <SectionHeader
-              eyebrow="Social links"
-              title="Follow NEXUS across the platforms where ideas travel"
-              description="All social destinations are configurable from a single file so brand links can be refreshed without touching page-level components."
-            />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {socialItems.map((item) => {
-                const Icon = item.icon;
-                return (
+
+          <div className="mt-10 flex flex-col items-center gap-4 rounded-2xl border bg-muted/60 px-6 py-6 sm:flex-row sm:justify-between">
+            <p className="flex items-center gap-2.5 text-sm text-muted-foreground">
+              <Clock className="size-4 shrink-0" aria-hidden="true" />
+              We typically respond within 24 hours on working days.
+            </p>
+            <ul
+              aria-label="Social media"
+              className="flex flex-wrap items-center gap-x-4 gap-y-2"
+            >
+              {siteConfig.socials.map((social) => (
+                <li key={social.label}>
                   <a
-                    key={item.title}
-                    href={item.href}
+                    href={social.href}
                     target="_blank"
-                    rel="noreferrer"
-                    className="glass-panel p-5 transition-colors hover:bg-white/12"
+                    rel="noopener noreferrer"
+                    className="rounded-sm text-sm font-medium text-muted-foreground underline-offset-4 transition-colors outline-none hover:text-foreground hover:underline focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white text-[#07111F]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <p className="mt-4 text-base font-semibold text-white">{item.title}</p>
+                    {social.label}
                   </a>
-                );
-              })}
-            </div>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        </Container>
       </section>
-      <CTASection
-        title="Prefer to start with one clear message?"
-        description="Send a concise note about your project, team, or goal and NEXUS can continue the conversation from there."
-        primaryLabel="hello@nexus.eco"
-        primaryHref={`mailto:${siteConfig.email}`}
-        secondaryLabel="View Solutions"
-        secondaryHref="/solutions"
-      />
+
+      {siteConfig.formspreeEndpoint ? (
+        <section className="border-t bg-muted/50 py-16 sm:py-24">
+          <Container className="max-w-2xl">
+            <SectionHeader
+              align="center"
+              eyebrow="Message us"
+              title="Send a message from here"
+              description="Fill in the form and it lands straight in our inbox."
+            />
+            <form
+              action={siteConfig.formspreeEndpoint}
+              method="POST"
+              className="mt-10 grid gap-5"
+            >
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div className="grid gap-2">
+                  <label htmlFor="name" className="text-sm font-medium">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    className="h-11 rounded-lg border bg-background px-3.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className="h-11 rounded-lg border bg-background px-3.5 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  />
+                </div>
+              </div>
+              <div className="grid gap-2">
+                <label htmlFor="message" className="text-sm font-medium">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={6}
+                  className="rounded-lg border bg-background px-3.5 py-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                />
+              </div>
+              <Button type="submit" size="lg" className="justify-self-start">
+                Send message
+              </Button>
+            </form>
+          </Container>
+        </section>
+      ) : null}
+
+      <section className="border-t py-16 sm:py-24">
+        <Container className="max-w-3xl">
+          <SectionHeader
+            align="center"
+            eyebrow="FAQ"
+            title="Quick answers"
+          />
+          <FAQ items={generalFaqs} className="mt-10" />
+        </Container>
+      </section>
     </>
   );
 }

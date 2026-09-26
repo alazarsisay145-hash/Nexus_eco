@@ -1,42 +1,62 @@
-import type { FAQItem } from "@/types";
+export type FAQ = {
+  question: string;
+  answer: string;
+};
 
-export const aiFaqs: FAQItem[] = [
+/** FAQs shown on the AI Access page. */
+export const aiAccessFaqs: FAQ[] = [
   {
-    question: "What is AI Access at NEXUS?",
+    question: "What exactly is NEXUS AI Access?",
     answer:
-      "AI Access is a structured way for learners, builders, and teams to discover practical AI tools, understand where they fit, and use them with confidence.",
+      "NEXUS AI Access is a simple way to get premium AI tools at an affordable price. Instead of paying for several expensive individual subscriptions, you get one plan through NEXUS that unlocks leading chat models, image generation and productivity tools.",
   },
   {
-    question: "Who is AI Access designed for?",
+    question: "Who is AI Access for?",
     answer:
-      "It is designed for students, developers, creators, founders, and organizations that want guided exposure to useful AI tools without needing their own complex setup.",
+      "It is built for students, young developers, creators, freelancers and small teams — anyone who needs serious AI capability without enterprise pricing. No technical background is required to get started.",
   },
   {
-    question: "How does access work?",
+    question: "How do I get access after choosing a plan?",
     answer:
-      "Each plan is paired with a clear onboarding path, recommended tools, and usage guidance. The external AI Access link is kept configurable so the fulfillment model can evolve later.",
+      "Choose a plan, complete the request through the NEXUS AI Access channel, and our team activates your access — usually within a few hours. You'll receive setup instructions and a quick-start guide.",
   },
   {
-    question: "Do I need technical experience to start?",
+    question: "Which AI tools are included?",
     answer:
-      "No. Starter pathways are built for beginners, while builder and team plans support more advanced workflows like coding, research, and operations.",
+      "Plans include access to leading conversational models, image generation and writing/coding assistants. The exact lineup evolves as the AI landscape changes — the current toolset is always listed on this page.",
+  },
+  {
+    question: "Can I upgrade or cancel my plan?",
+    answer:
+      "Yes. Plans are monthly, and you can upgrade, downgrade or stop at the end of any billing period by messaging the NEXUS team. No long-term lock-in.",
+  },
+  {
+    question: "Is my usage private?",
+    answer:
+      "Yes. Your conversations and generations are your own. NEXUS does not read, store or resell your usage content.",
   },
 ];
 
-export const generalFaqs: FAQItem[] = [
+/** General FAQs shown on the contact page. */
+export const generalFaqs: FAQ[] = [
   {
-    question: "Does NEXUS require an account to explore the site?",
+    question: "What is NEXUS?",
     answer:
-      "No. This website is intentionally frontend-first and does not require authentication, a database, or any backend services.",
+      "NEXUS is a youth-focused technology ecosystem. We build software for businesses, provide affordable AI access, run a developer community, curate learning resources and connect young people with opportunities.",
   },
   {
-    question: "Can NEXUS support custom software projects?",
+    question: "How do I join the NEXUS community?",
     answer:
-      "Yes. NEXUS offers software solutions ranging from websites and automation to custom digital products tailored to organizational needs.",
+      "Membership is free. Tap “Join NEXUS” anywhere on the site and you'll land in our community space, where builders share projects, opportunities and help each other grow.",
   },
   {
-    question: "What kind of opportunities are shared?",
+    question: "How do I request a software project?",
     answer:
-      "The ecosystem highlights jobs, internships, freelance work, hackathons, scholarships, events, and accelerator-style programs.",
+      "Reach out through the contact page with a short description of what you need. We'll schedule a discovery conversation, scope the work and send a clear proposal — no obligation.",
+  },
+  {
+    question: "Does NEXUS work with clients outside Ethiopia?",
+    answer:
+      "Yes. We work remotely with startups and organizations globally, while staying rooted in growing the East African tech ecosystem.",
   },
 ];

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Abstract artwork for Vendora">
+  <rect width="800" height="450" fill="#F7F8F6"/>
+  <g transform="translate(230 105)">
+    <rect x="0" y="60" width="340" height="180" rx="14" fill="#FFFFFF" stroke="#0B0D10" stroke-width="2.5"/>
+    <path d="M-20 60 L30 0 L310 0 L360 60 Z" fill="#0B0D10"/>
+    <path d="M-20 60 h380" stroke="#0B0D10" stroke-width="2.5"/>
+    <rect x="30" y="100" width="120" height="140" rx="8" fill="#DFFFD8"/>
+    <rect x="185" y="100" width="125" height="70" rx="8" fill="#7CFF6B"/>
+    <rect x="185" y="185" width="125" height="24" rx="8" fill="#0B0D10" opacity="0.85"/>
+  </g>
+  <circle cx="640" cy="330" r="26" fill="#7CFF6B"/>
+  <path d="M630 330 l8 8 l14 -16" stroke="#0B0D10" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

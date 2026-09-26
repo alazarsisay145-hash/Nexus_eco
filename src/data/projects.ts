@@ -1,43 +1,72 @@
-import type { Project } from "@/types";
+import { siteConfig } from "@/config/site";
+
+export type ProjectStatus = "Concept" | "Building" | "Beta" | "Live";
+
+export type Project = {
+  id: string;
+  name: string;
+  description: string;
+  status: ProjectStatus;
+  technologies: string[];
+  image: string;
+  url?: string;
+};
 
 export const projects: Project[] = [
   {
-    name: "NEXUS Launchpad",
+    id: "nexus-ai-access",
+    name: "NEXUS AI Access",
     description:
-      "A project readiness workspace helping young builders shape ideas, track milestones, and prepare public launches.",
-    status: "Building",
-    technologies: ["Next.js", "TypeScript", "Design Systems"],
-    image: "/images/projects/launchpad.svg",
-    imageAlt: "Abstract dashboard illustration for NEXUS Launchpad",
-    href: "https://github.com/alazarsisay145-hash/Nexus_eco",
-  },
-  {
-    name: "NEXUS Mentor Match",
-    description:
-      "An ecosystem concept for connecting emerging talent with mentors, operators, and technical collaborators.",
-    status: "Concept",
-    technologies: ["Product Strategy", "Community Ops", "Matching Flows"],
-    image: "/images/projects/mentor-match.svg",
-    imageAlt: "Abstract connection map illustration for NEXUS Mentor Match",
-  },
-  {
-    name: "NEXUS Signal",
-    description:
-      "A curated opportunities feed for internships, scholarships, hackathons, and programs tailored to young builders.",
-    status: "Beta",
-    technologies: ["Content Curation", "Automation", "Responsive UX"],
-    image: "/images/projects/signal.svg",
-    imageAlt: "Abstract feed interface illustration for NEXUS Signal",
-    href: "https://github.com/alazarsisay145-hash/Nexus_eco",
-  },
-  {
-    name: "NEXUS Studio Sites",
-    description:
-      "A live service line focused on high-performance brand and product websites for ambitious organizations.",
+      "Affordable, shared access to premium AI tools for students and young professionals — one subscription, the best models.",
     status: "Live",
-    technologies: ["Frontend Engineering", "Brand Systems", "SEO"],
-    image: "/images/projects/studio-sites.svg",
-    imageAlt: "Abstract website grid illustration for NEXUS Studio Sites",
-    href: "mailto:hello@nexus.eco?subject=Studio%20Sites%20with%20NEXUS",
+    technologies: ["Next.js", "TypeScript", "Telegram API"],
+    image: "/projects/nexus-ai-access.svg",
+    url: siteConfig.aiAccessUrl,
+  },
+  {
+    id: "nexus-community",
+    name: "NEXUS Community Hub",
+    description:
+      "The home of the NEXUS developer community — discussions, collaboration channels, events and peer support.",
+    status: "Live",
+    technologies: ["Telegram", "Community Ops"],
+    image: "/projects/nexus-community.svg",
+    url: siteConfig.communityUrl,
+  },
+  {
+    id: "nexus-learn",
+    name: "NEXUS Learn",
+    description:
+      "A structured learning platform with curated paths in programming, web development, AI and career skills.",
+    status: "Building",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    image: "/projects/nexus-learn.svg",
+  },
+  {
+    id: "vendora",
+    name: "Vendora",
+    description:
+      "A lightweight commerce toolkit that helps small businesses launch online storefronts and manage orders.",
+    status: "Beta",
+    technologies: ["Next.js", "TypeScript", "Stripe-ready"],
+    image: "/projects/vendora.svg",
+  },
+  {
+    id: "pulse-events",
+    name: "Pulse",
+    description:
+      "An events and hackathon toolkit for organizers — registrations, team formation and judging in one place.",
+    status: "Building",
+    technologies: ["React", "Node.js", "PostgreSQL-ready"],
+    image: "/projects/pulse.svg",
+  },
+  {
+    id: "atlas-api",
+    name: "Atlas",
+    description:
+      "An open opportunities index that aggregates jobs, scholarships and programs for young technologists.",
+    status: "Concept",
+    technologies: ["API Design", "Data Aggregation"],
+    image: "/projects/atlas.svg",
   },
 ];

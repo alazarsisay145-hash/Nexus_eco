@@ -1,91 +1,193 @@
 import type { Metadata } from "next";
-import { Compass, Lightbulb, Network, Wrench } from "lucide-react";
+import Link from "next/link";
+import {
+  Eye,
+  Globe,
+  GraduationCap,
+  HandHeart,
+  Hammer,
+  Lightbulb,
+  Rocket,
+  Store,
+  Target,
+  Users,
+} from "lucide-react";
 
+import { Container } from "@/components/container";
 import { CTASection } from "@/components/cta-section";
+import { FeatureCard } from "@/components/feature-card";
 import { Hero } from "@/components/hero";
 import { SectionHeader } from "@/components/section-header";
-import { buildMetadata } from "@/lib/metadata";
+import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "NEXUS is a youth-focused technology ecosystem connecting young people, technology, businesses and opportunities through accessible digital tools and community.",
+};
 
 const beliefs = [
   {
-    title: "Mission",
+    icon: Users,
+    title: "Talent is everywhere",
     description:
-      "To connect young people, technology, businesses and opportunities through accessible digital tools and a community built around creating.",
-    icon: Compass,
+      "Opportunity isn't. We exist to close that gap for young people with the will to build.",
   },
   {
-    title: "Vision",
+    icon: Hammer,
+    title: "Creating beats consuming",
     description:
-      "A future where more young people can participate in technology confidently, build meaningful products, and access new paths to growth.",
+      "The fastest way to grow is to make things. Everything we do pushes people to build.",
+  },
+  {
+    icon: HandHeart,
+    title: "Access should be affordable",
+    description:
+      "World-class tools shouldn't be locked behind foreign cards and enterprise prices.",
+  },
+  {
     icon: Lightbulb,
-  },
-  {
-    title: "What we believe",
+    title: "Community compounds",
     description:
-      "Access should be practical, community should be active, and technology should create genuine opportunity—not just noise.",
-    icon: Network,
-  },
-  {
-    title: "What we build",
-    description:
-      "Web experiences, software solutions, AI pathways, community systems, and lab projects that support creation and discovery.",
-    icon: Wrench,
+      "Knowledge shared multiplies. A connected generation of builders lifts everyone.",
   },
 ];
 
-export const metadata: Metadata = buildMetadata({
-  title: "About",
-  description:
-    "Learn about NEXUS, its mission, vision, beliefs, and the youth-focused technology ecosystem it is building.",
-  path: "/about",
-});
+const whatWeBuild = [
+  {
+    icon: Globe,
+    title: "Software for businesses",
+    description:
+      "Websites, systems, SaaS and automation that help organizations grow.",
+  },
+  {
+    icon: Rocket,
+    title: "Products in NEXUS Labs",
+    description:
+      "Our own tools — from AI access to community platforms — built in the open.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Paths for people",
+    description:
+      "Learning tracks, challenges and opportunities that turn beginners into professionals.",
+  },
+];
+
+const whoWeServe = [
+  {
+    icon: Users,
+    title: "Young builders",
+    description:
+      "Students, self-taught developers, designers and creators at the start of their journey.",
+  },
+  {
+    icon: Store,
+    title: "Small businesses & startups",
+    description:
+      "Teams that need serious technology delivered with speed, care and honest pricing.",
+  },
+  {
+    icon: Globe,
+    title: "The wider ecosystem",
+    description:
+      "Communities, schools and organizations investing in the next generation of tech talent.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
       <Hero
-        eyebrow="About NEXUS"
-        title="A youth-focused technology ecosystem built around creation"
-        description="NEXUS exists to help young people connect with technology, community, businesses, and opportunities through practical digital experiences."
-        primaryLabel="Explore Solutions"
-        primaryHref="/solutions"
-        secondaryLabel="Contact Us"
-        secondaryHref="/contact"
-      />
-      <section className="section-shell py-20">
-        <SectionHeader
-          eyebrow="Why NEXUS exists"
-          title="Connecting people, tools, and opportunities in one ecosystem"
-          description="NEXUS is designed for students, developers, founders, teams, and communities who need accessible entry points into technology and stronger support for execution."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {beliefs.map((belief) => {
-            const Icon = belief.icon;
-            return (
-              <article key={belief.title} className="glass-panel p-6">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">{belief.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{belief.description}</p>
-              </article>
-            );
-          })}
-        </div>
-        <div className="glass-panel-soft mt-12 p-8">
-          <h2 className="text-2xl font-semibold text-white">Who we serve</h2>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-300">
-            NEXUS serves emerging talent, youth-led initiatives, startups, education communities, and organizations that want a clearer path into digital product creation and technology growth.
-          </p>
-        </div>
+        eyebrow={`About ${siteConfig.name}`}
+        title="A technology ecosystem built by and for young people"
+        description={`${siteConfig.name} combines software solutions, AI access, a developer community, technology education and opportunities — connected so that each part strengthens the others.`}
+      >
+        <Button asChild size="lg">
+          <Link href="/contact">Work with us</Link>
+        </Button>
+        <Button asChild variant="outline" size="lg">
+          <Link href="/community">Meet the community</Link>
+        </Button>
+      </Hero>
+
+      <section className="py-16 sm:py-24">
+        <Container>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <div className="rounded-3xl bg-ink p-8 sm:p-10">
+              <p className="flex items-center gap-2 text-sm font-semibold tracking-wide text-brand uppercase">
+                <Target className="size-4" aria-hidden="true" />
+                Mission
+              </p>
+              <p className="mt-5 font-display text-2xl leading-snug font-bold tracking-tight text-white sm:text-3xl">
+                “To connect young people, technology, businesses and
+                opportunities through accessible digital tools and a community
+                built around creating.”
+              </p>
+            </div>
+            <div className="rounded-3xl border bg-card p-8 sm:p-10">
+              <p className="flex items-center gap-2 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+                <Eye className="size-4" aria-hidden="true" />
+                Vision
+              </p>
+              <p className="mt-5 font-display text-2xl leading-snug font-bold tracking-tight sm:text-3xl">
+                A generation of young people who don&apos;t wait for
+                opportunity — they build it, together.
+              </p>
+            </div>
+          </div>
+        </Container>
       </section>
+
+      <section className="border-y bg-muted/50 py-16 sm:py-24">
+        <Container>
+          <SectionHeader
+            align="center"
+            eyebrow="What we believe"
+            title="The principles behind everything"
+          />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {beliefs.map((belief) => (
+              <FeatureCard key={belief.title} {...belief} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-16 sm:py-24">
+        <Container>
+          <SectionHeader
+            align="center"
+            eyebrow="What we build"
+            title="Three kinds of work, one ecosystem"
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {whatWeBuild.map((item) => (
+              <FeatureCard key={item.title} {...item} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-y bg-muted/50 py-16 sm:py-24">
+        <Container>
+          <SectionHeader
+            align="center"
+            eyebrow="Who we serve"
+            title="Built for the people doing the work"
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {whoWeServe.map((item) => (
+              <FeatureCard key={item.title} {...item} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
       <CTASection
-        title="Want to build with a mission-driven technology ecosystem?"
-        description="Talk to NEXUS about software, AI access, labs, or community collaborations that support young builders."
-        primaryLabel="Contact NEXUS"
-        primaryHref="/contact"
-        secondaryLabel="Join Community"
-        secondaryHref="/community"
+        title={`Build the future with ${siteConfig.name}`}
+        description="Whether you want to join the community, get AI access or start a project — the ecosystem is open."
       />
     </>
   );

@@ -1,13 +1,21 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, BriefcaseBusiness, Code2, GraduationCap, Lightbulb, Sparkles, Users } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Bot,
+  Hammer,
+  MessagesSquare,
+  Rocket,
+  Sparkles,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 
-import { AIPlanCard } from "@/components/ai-plan-card";
 import { ArticleCard } from "@/components/article-card";
+import { Container } from "@/components/container";
 import { CTASection } from "@/components/cta-section";
 import { FeatureCard } from "@/components/feature-card";
-import { FAQ } from "@/components/faq";
-import { Hero } from "@/components/hero";
 import { OpportunityCard } from "@/components/opportunity-card";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeader } from "@/components/section-header";
@@ -15,226 +23,373 @@ import { ServiceCard } from "@/components/service-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { aiPlans } from "@/data/ai-plans";
 import { articles } from "@/data/articles";
-import { generalFaqs } from "@/data/faqs";
 import { opportunities } from "@/data/opportunities";
 import { projects } from "@/data/projects";
 import { services } from "@/data/services";
-import { buildMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Home",
-  description:
-    "Discover Nexus, a youth and campus social ecosystem connecting AI access, community, learning, labs, opportunities, and software solutions.",
-  path: "/",
-});
+export const metadata: Metadata = {
+  title: `${siteConfig.name} — ${siteConfig.tagline}`,
+  description: siteConfig.description,
+};
 
-const introFeatures = [
+const pillars = [
   {
-    icon: <Code2 className="h-6 w-6" aria-hidden="true" />,
-    title: "Software solutions",
-    description: "Digital products and websites designed with clarity, performance, and future growth in mind.",
+    icon: Hammer,
+    title: "Build",
+    description:
+      "Software solutions and real projects — from business systems to SaaS products built by young engineers.",
   },
   {
-    icon: <Sparkles className="h-6 w-6" aria-hidden="true" />,
-    title: "AI access",
-    description: "Practical pathways into useful AI tools for students, builders, and teams without unnecessary complexity.",
-  },
-  {
-    icon: <Users className="h-6 w-6" aria-hidden="true" />,
-    title: "Community and opportunities",
-    description: "A connected ecosystem for collaboration, learning, experimentation, and real-world opportunities.",
-  },
-];
-
-const ecosystemSections = [
-  {
-    title: "Developer Community",
-    description: "A network for collaboration, accountability, challenges, and local or remote project momentum.",
     icon: Users,
-    href: "/community",
+    title: "Connect",
+    description:
+      "A developer community where builders meet collaborators, mentors and their next opportunity.",
   },
   {
-    title: "Learn",
-    description: "Curated programming, AI, design, and career resources that support practical skill-building.",
-    icon: GraduationCap,
-    href: "/learn",
+    icon: Sparkles,
+    title: "Access",
+    description:
+      "Affordable access to premium AI tools and technology that would otherwise be out of reach.",
   },
   {
-    title: "Opportunities",
-    description: "Jobs, internships, scholarships, freelance work, events, and programs gathered in one place.",
-    icon: BriefcaseBusiness,
-    href: "/opportunities",
-  },
-  {
-    title: "NEXUS Labs",
-    description: "Concepts, experiments, and product initiatives turning ideas into technology projects with direction.",
-    icon: Lightbulb,
-    href: "/labs",
+    icon: TrendingUp,
+    title: "Grow",
+    description:
+      "Learning resources, challenges and curated opportunities that turn potential into careers.",
   },
 ];
 
-export default function Home() {
+const communityHighlights = [
+  {
+    icon: MessagesSquare,
+    title: "Developer networking",
+    description: "Meet peers, mentors and collaborators who build like you do.",
+  },
+  {
+    icon: Hammer,
+    title: "Build together",
+    description: "Team up on real projects, open source and community builds.",
+  },
+  {
+    icon: Rocket,
+    title: "Events & challenges",
+    description: "Hackathons, coding challenges and workshops all year round.",
+  },
+];
+
+export default function HomePage() {
+  const featuredServices = services.slice(0, 3);
+  const featuredArticles = articles.slice(0, 3);
+  const featuredOpportunities = opportunities.slice(0, 3);
+  const featuredProjects = projects.slice(0, 3);
+
   return (
     <>
-      <Hero
-        eyebrow="Youth and campus social ecosystem"
-        title="NEXUS connects ambitious youth to AI access, community, and real campus momentum."
-        description="Discover a polished ecosystem for students, builders, creators, and teams—where AI access, learning, labs, software solutions, and opportunities all move together."
-        primaryLabel="Explore AI Access"
-        primaryHref="/ai-access"
-        secondaryLabel="Join the Community"
-        secondaryHref="/community"
-        stats={siteConfig.metrics.map((metric) => ({ ...metric }))}
-      />
-
-      <section id="introduction" className="section-shell py-20">
-        <SectionHeader
-          eyebrow="NEXUS introduction"
-          title="A modern ecosystem for young people building with technology"
-          description="NEXUS brings together software delivery, AI enablement, education, community, and opportunities so builders can move with more confidence and support."
+      {/* 0 — Hero */}
+      <section className="relative overflow-hidden border-b">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(circle,#0b0d10_1px,transparent_1px)] [background-size:26px_26px] opacity-[0.05]"
         />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {introFeatures.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
+        <div
+          aria-hidden="true"
+          className="absolute -top-40 left-1/2 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"
+        />
+        <Container className="relative flex flex-col items-center py-20 text-center sm:py-28 lg:py-32">
+          <Badge variant="soft" className="mb-6 px-3.5 py-1 text-xs font-semibold">
+            {siteConfig.tagline}
+          </Badge>
+          <h1 className="max-w-4xl font-display text-4xl font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+            Build the future with{" "}
+            <span className="relative inline-block whitespace-nowrap">
+              {siteConfig.name}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 240 12"
+                preserveAspectRatio="none"
+                className="absolute -bottom-1.5 left-0 h-2.5 w-full text-brand sm:-bottom-2.5 sm:h-3.5"
+              >
+                <path
+                  d="M3 9c60-6 160-6 234-3"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </svg>
+            </span>
+            .
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
+            Software solutions, AI access, developer community and
+            opportunities—all connected in one ecosystem.
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+            <Button asChild variant="default" size="lg">
+              <Link href="#ecosystem">
+                Explore {siteConfig.name}
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button asChild variant="brand" size="lg">
+              <a
+                href={siteConfig.communityUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Join the Community
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            </Button>
+          </div>
+          <ul className="mt-14 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium text-muted-foreground">
+            {["Software", "AI Access", "Community", "Learning", "Opportunities"].map(
+              (item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span
+                    aria-hidden="true"
+                    className="size-1.5 rounded-full bg-brand"
+                  />
+                  {item}
+                </li>
+              )
+            )}
+          </ul>
+        </Container>
       </section>
 
-      <section className="section-shell py-20">
-        <SectionHeader
-          eyebrow="Software Solutions"
-          title="Products, platforms, and digital systems designed to help organizations grow"
-          description="NEXUS delivers focused software services that combine strong UX, modern engineering, and adaptable architecture without unnecessary complexity."
-        >
-          <Button asChild variant="ghost" className="px-0 text-sm text-white hover:bg-transparent hover:text-[#7CFF6B]">
-            <Link href="/solutions">
-              View all solutions
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </SectionHeader>
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard key={service.title} service={service} />
-          ))}
-        </div>
-      </section>
-
-      <section className="section-divider py-20">
-        <div className="section-shell">
+      {/* 1 — NEXUS introduction */}
+      <section id="ecosystem" className="scroll-mt-20 py-16 sm:py-24">
+        <Container>
           <SectionHeader
-            eyebrow="AI Access"
-            title="Structured access to practical AI tools"
-            description="From beginner support to builder workflows, AI Access helps people choose the right tools, adopt them with confidence, and keep learning through guided resources."
+            align="center"
+            eyebrow="The ecosystem"
+            title="One ecosystem. Every tool a young builder needs."
+            description={`${siteConfig.name} is a youth-focused technology ecosystem. We connect young people, technology, businesses and opportunities through accessible digital tools and a community built around creating.`}
           />
-          <div className="mt-8 flex flex-wrap gap-3">
-            {siteConfig.aiTools.map((tool) => (
-              <Badge key={tool} variant="outline">
-                {tool}
-              </Badge>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((pillar) => (
+              <FeatureCard key={pillar.title} {...pillar} />
             ))}
           </div>
-          <div className="mt-12 grid gap-6 xl:grid-cols-3">
-            {aiPlans.map((plan) => (
-              <AIPlanCard key={plan.name} plan={plan} />
-            ))}
-          </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="section-shell py-20">
-        <SectionHeader
-          eyebrow="Community, learning, and growth"
-          title="Everything around the product work matters too"
-          description="NEXUS is not only about building software—it is also about helping people connect, learn faster, collaborate better, and find meaningful ways to grow."
-        />
-        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {ecosystemSections.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article key={item.title} className="glass-panel p-6">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#7CFF6B]/14 text-[#7CFF6B]">
-                  <Icon className="h-6 w-6" aria-hidden="true" />
+      {/* 2 — Software Solutions */}
+      <section className="border-y bg-muted/50 py-16 sm:py-24">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeader
+              eyebrow="Software Solutions"
+              title="Software that moves businesses forward"
+              description="We design and build websites, business systems, SaaS products and automations for startups and organizations that want to grow."
+            />
+            <Button asChild variant="outline">
+              <Link href="/solutions">
+                View all solutions
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {featuredServices.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 3 — AI Access */}
+      <section className="py-16 sm:py-24">
+        <Container>
+          <div className="relative overflow-hidden rounded-3xl bg-ink px-6 py-14 sm:px-12 sm:py-16">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(circle,#7cff6b_1px,transparent_1px)] [background-size:26px_26px] opacity-[0.07]"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -top-24 right-0 h-56 w-80 rounded-full bg-brand/15 blur-3xl"
+            />
+            <div className="relative grid items-center gap-10 lg:grid-cols-2">
+              <div>
+                <p className="flex items-center gap-2 text-sm font-semibold tracking-wide text-brand uppercase">
+                  <Bot className="size-4" aria-hidden="true" />
+                  AI Access
+                </p>
+                <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-balance text-white sm:text-4xl">
+                  Premium AI tools, without the premium price
+                </h2>
+                <p className="mt-4 max-w-lg text-base leading-relaxed text-white/70">
+                  One affordable plan unlocks leading AI chat models, image
+                  generation and productivity tools — built for students,
+                  creators and young professionals.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Button
+                    asChild
+                    variant="brand"
+                    size="lg"
+                    className="focus-visible:ring-brand focus-visible:ring-offset-ink"
+                  >
+                    <a
+                      href={siteConfig.aiAccessUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Get AI Access
+                      <ArrowUpRight aria-hidden="true" />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline-light" size="lg">
+                    <Link href="/ai-access">See plans & details</Link>
+                  </Button>
                 </div>
-                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
-                <Button asChild variant="ghost" className="mt-5 px-0 text-white hover:bg-transparent hover:text-[#7CFF6B]">
-                  <Link href={item.href}>
-                    Explore
-                    <ArrowRight className="ml-2 h-4 w-4" />
+              </div>
+              <ul className="grid gap-3">
+                {[
+                  "Leading AI chat models for study, code and work",
+                  "Image generation for content and design",
+                  "One simple subscription — no foreign card needed",
+                  "Setup help and support from the NEXUS team",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-white/85"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 4 — Developer Community */}
+      <section className="border-y bg-muted/50 py-16 sm:py-24">
+        <Container>
+          <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.2fr]">
+            <div>
+              <SectionHeader
+                eyebrow="Developer Community"
+                title="You don't have to build alone"
+                description="The NEXUS community is where young developers, designers and founders share knowledge, collaborate on projects and push each other forward."
+              />
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild variant="brand">
+                  <a
+                    href={siteConfig.communityUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Join {siteConfig.name} Community
+                    <ArrowUpRight aria-hidden="true" />
+                  </a>
+                </Button>
+                <Button asChild variant="ghost">
+                  <Link href="/community">
+                    Explore the community
+                    <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
-              </article>
-            );
-          })}
-        </div>
+              </div>
+            </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {communityHighlights.map((highlight) => (
+                <FeatureCard key={highlight.title} {...highlight} />
+              ))}
+            </div>
+          </div>
+        </Container>
       </section>
 
-      <section className="section-divider py-20">
-        <div className="section-shell">
-          <SectionHeader
-            eyebrow="Featured resources"
-            title="A learning hub shaped around practical growth"
-            description="Explore curated resources across programming, web development, AI, design, entrepreneurship, and career development."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {articles.map((article) => (
-              <ArticleCard key={article.title} article={article} />
+      {/* 5 — Learn */}
+      <section className="py-16 sm:py-24">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeader
+              eyebrow="Learn"
+              title="Learn the skills that open doors"
+              description="Curated learning paths and resources across programming, web development, AI, design, entrepreneurship and career growth."
+            />
+            <Button asChild variant="outline">
+              <Link href="/learn">
+                Visit the learning hub
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {featuredArticles.map((article) => (
+              <ArticleCard key={article.id} article={article} />
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="section-shell py-20">
-        <SectionHeader
-          eyebrow="Opportunities"
-          title="Real pathways to learn, earn, and get seen"
-          description="NEXUS highlights opportunities that help young builders gain experience, income, network strength, and momentum."
-        />
-        <div className="mt-12 grid gap-6 xl:grid-cols-2">
-          {opportunities.slice(0, 4).map((opportunity) => (
-            <OpportunityCard key={opportunity.title} opportunity={opportunity} />
-          ))}
-        </div>
-      </section>
-
-      <section className="section-divider py-20">
-        <div className="section-shell">
-          <SectionHeader
-            eyebrow="NEXUS Labs"
-            title="Ideas, experiments, and products moving from concept to launch"
-            description="Labs is where NEXUS explores product concepts, validates solutions, and builds projects that can create real value in the ecosystem."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {projects.map((project) => (
-              <ProjectCard key={project.name} project={project} />
+      {/* 6 — Opportunities */}
+      <section className="border-y bg-muted/50 py-16 sm:py-24">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeader
+              eyebrow="Opportunities"
+              title="Your next opportunity is waiting"
+              description="Jobs, internships, hackathons, scholarships and programs — curated for young technologists and updated by the community."
+            />
+            <Button asChild variant="outline">
+              <Link href="/opportunities">
+                Browse opportunities
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {featuredOpportunities.map((opportunity) => (
+              <OpportunityCard key={opportunity.id} opportunity={opportunity} />
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="section-shell py-20">
-        <SectionHeader
-          eyebrow="FAQ"
-          title="Common questions about NEXUS"
-          description="A quick overview of how the ecosystem works today and how it has been intentionally designed to remain simple, accessible, and upgrade-ready."
-          align="center"
-        />
-        <div className="mx-auto mt-12 max-w-3xl">
-          <FAQ items={generalFaqs} />
-        </div>
+      {/* 7 — NEXUS Labs */}
+      <section className="py-16 sm:pt-24 sm:pb-4">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeader
+              eyebrow={`${siteConfig.name} Labs`}
+              title="Where we experiment and ship"
+              description={`${siteConfig.name} Labs is our product studio — the place where community ideas become real tools, from early concepts to live products.`}
+            />
+            <Button asChild variant="outline">
+              <Link href="/labs">
+                Explore {siteConfig.name} Labs
+                <ArrowRight aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+        </Container>
       </section>
 
-      <CTASection
-        title="Ready to build, connect, access, and grow with NEXUS?"
-        description="Whether you need a software solution, a stronger community, practical AI access, or the next opportunity on your path, NEXUS is designed to help you move forward."
-        primaryLabel="Join NEXUS"
-        primaryHref={siteConfig.communityUrl}
-        secondaryLabel="Contact Us"
-        secondaryHref="/contact"
-      />
+      {/* 8 — Featured projects */}
+      <section className="py-12 sm:py-16">
+        <Container>
+          <h2 className="sr-only">Featured projects</h2>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 9 — Final CTA */}
+      <CTASection />
     </>
   );
 }

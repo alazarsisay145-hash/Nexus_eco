@@ -1,26 +1,46 @@
 import { ArrowUpRight } from "lucide-react";
 
-import type { Article } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import type { Article } from "@/data/articles";
 
 export function ArticleCard({ article }: { article: Article }) {
   return (
-    <article className="glass-panel flex h-full flex-col p-6">
-      <div className="flex items-center justify-between gap-3">
-        <Badge variant="outline">{article.category}</Badge>
-        <span className="text-sm text-slate-400">{article.readTime}</span>
-      </div>
-      <h3 className="mt-4 text-xl font-semibold text-white">{article.title}</h3>
-      <p className="mt-4 text-sm leading-7 text-slate-300">{article.description}</p>
-      <a
-        href={article.href}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#7CFF6B]"
-      >
-        Explore resource
-        <ArrowUpRight className="h-4 w-4" />
-      </a>
-    </article>
+    <Card className="gap-4 transition-colors hover:border-ink/25">
+      <CardHeader>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="soft">{article.category}</Badge>
+          <Badge variant="outline">{article.level}</Badge>
+        </div>
+        <h3 className="mt-3 font-display text-lg font-bold tracking-tight">
+          {article.title}
+        </h3>
+      </CardHeader>
+      <CardContent>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {article.description}
+        </p>
+      </CardContent>
+      <CardFooter className="mt-auto items-center justify-between gap-3">
+        <span className="text-xs font-medium text-muted-foreground">
+          {article.source}
+        </span>
+        <a
+          href={article.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Start learning
+          <ArrowUpRight className="size-4" aria-hidden="true" />
+          <span className="sr-only">: {article.title}</span>
+        </a>
+      </CardFooter>
+    </Card>
   );
 }

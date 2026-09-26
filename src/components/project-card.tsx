@@ -1,47 +1,75 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
-import type { Project } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import type { Project, ProjectStatus } from "@/data/projects";
 
-const statusVariant = {
-  Beta: "accent",
-  Building: "default",
+const statusVariant: Record<
+  ProjectStatus,
+  "outline" | "muted" | "soft" | "brand"
+> = {
   Concept: "outline",
-  Live: "dark",
-} as const;
+  Building: "muted",
+  Beta: "soft",
+  Live: "brand",
+};
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.08] shadow-[0_24px_70px_rgba(5,16,29,0.3)] backdrop-blur-xl">
-      <div className="relative aspect-[16/10] border-b border-white/10 bg-[#0D1A2B]">
-        <Image src={project.image} alt={project.imageAlt} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 100vw" />
+    <Card className="gap-4 overflow-hidden pt-0 transition-colors hover:border-ink/25">
+      <div className="relative aspect-[16/9] w-full border-b bg-muted">
+        <Image
+          src={project.image}
+          alt={`${project.name} — project artwork`}
+          fill
+          unoptimized
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
       </div>
-      <div className="p-6">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl font-semibold text-white">{project.name}</h3>
-          <Badge variant={statusVariant[project.status]}>{project.status}</Badge>
+      <CardHeader>
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="font-display text-lg font-bold tracking-tight">
+            {project.name}
+          </h3>
+          <Badge variant={statusVariant[project.status]}>
+            {project.status}
+          </Badge>
         </div>
-        <p className="mt-4 text-sm leading-7 text-slate-300">{project.description}</p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.technologies.map((technology) => (
-            <Badge key={technology} variant="outline">
-              {technology}
-            </Badge>
+        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
+      </CardHeader>
+      <CardContent className="mt-auto">
+        <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
+          {project.technologies.map((tech) => (
+            <li key={tech}>
+              <Badge variant="secondary" className="font-normal">
+                {tech}
+              </Badge>
+            </li>
           ))}
-        </div>
-        {project.href ? (
+        </ul>
+      </CardContent>
+      {project.url ? (
+        <CardFooter>
           <a
-            href={project.href}
-            target={project.href.startsWith("mailto:") ? undefined : "_blank"}
-            rel={project.href.startsWith("mailto:") ? undefined : "noreferrer"}
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#7CFF6B]"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            View project
-            <ArrowUpRight className="h-4 w-4" />
+            Visit {project.name}
+            <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
-        ) : null}
-      </div>
-    </article>
+        </CardFooter>
+      ) : null}
+    </Card>
   );
 }

@@ -2,13 +2,23 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
 
-const routes = ["/", "/about", "/ai-access", "/community", "/learn", "/labs", "/opportunities", "/solutions", "/contact"];
-
 export default function sitemap(): MetadataRoute.Sitemap {
+  const routes = [
+    "",
+    "/solutions",
+    "/ai-access",
+    "/community",
+    "/learn",
+    "/opportunities",
+    "/labs",
+    "/about",
+    "/contact",
+  ];
+
   return routes.map((route) => ({
-    url: `${siteConfig.url}${route === "/" ? "" : route}`,
+    url: `${siteConfig.url}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === "/" ? "weekly" : "monthly",
-    priority: route === "/" ? 1 : 0.8,
+    changeFrequency: route === "" ? "weekly" : "monthly",
+    priority: route === "" ? 1 : 0.8,
   }));
 }

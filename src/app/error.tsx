@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { RotateCcw } from "lucide-react";
 
+import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 
 export default function Error({
@@ -19,24 +21,28 @@ export default function Error({
   }, [error]);
 
   return (
-    <section className="section-shell flex min-h-[70vh] items-center py-16">
-      <div className="glass-panel section-glow w-full p-8 text-center sm:p-12">
-        <p className="text-sm font-semibold tracking-[0.28em] text-[#7CFF6B] uppercase">Something went wrong</p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-          We hit a temporary issue loading Nexus.
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-          Try the page again or head back to the homepage while we reconnect the experience.
+    <section className="py-24 sm:py-32">
+      <Container className="flex flex-col items-center text-center">
+        <p className="font-display text-sm font-bold tracking-widest text-muted-foreground uppercase">
+          Something went wrong
         </p>
-        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-          <Button size="lg" variant="accent" onClick={reset}>
+        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+          We hit a temporary issue
+        </h1>
+        <p className="mt-4 max-w-md text-base text-muted-foreground">
+          Try the page again or head back to the homepage while we reconnect
+          the experience.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button onClick={reset}>
+            <RotateCcw aria-hidden="true" />
             Try again
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-            <Link href="/">Back home</Link>
+          <Button asChild variant="outline">
+            <Link href="/">Back to home</Link>
           </Button>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

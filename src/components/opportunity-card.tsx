@@ -1,39 +1,60 @@
-import { ArrowUpRight, Building2, CalendarDays, MapPin } from "lucide-react";
+import { ArrowUpRight, CalendarDays, MapPin } from "lucide-react";
 
-import type { Opportunity } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import type { Opportunity } from "@/data/opportunities";
 
-export function OpportunityCard({ opportunity }: { opportunity: Opportunity }) {
+export function OpportunityCard({
+  opportunity,
+}: {
+  opportunity: Opportunity;
+}) {
   return (
-    <article className="glass-panel flex h-full flex-col p-6">
-      <Badge variant="accent" className="w-fit">
-        {opportunity.category}
-      </Badge>
-      <h3 className="mt-4 text-xl font-semibold text-white">{opportunity.title}</h3>
-      <div className="mt-4 grid gap-3 text-sm text-slate-300 sm:grid-cols-3">
-        <p className="inline-flex items-center gap-2">
-          <Building2 className="h-4 w-4" />
+    <Card className="gap-4 transition-colors hover:border-ink/25">
+      <CardHeader>
+        <div className="flex items-center justify-between gap-3">
+          <Badge variant="soft">{opportunity.type}</Badge>
+        </div>
+        <h3 className="mt-3 font-display text-lg font-bold tracking-tight">
+          {opportunity.title}
+        </h3>
+        <p className="text-sm font-medium text-foreground/70">
           {opportunity.organization}
         </p>
-        <p className="inline-flex items-center gap-2">
-          <MapPin className="h-4 w-4" />
-          {opportunity.location}
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {opportunity.description}
         </p>
-        <p className="inline-flex items-center gap-2">
-          <CalendarDays className="h-4 w-4" />
-          {opportunity.deadline}
-        </p>
-      </div>
-      <p className="mt-4 text-sm leading-7 text-slate-300">{opportunity.description}</p>
-      <a
-        href={opportunity.href}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-[#7CFF6B]"
-      >
-        View opportunity
-        <ArrowUpRight className="h-4 w-4" />
-      </a>
-    </article>
+        <dl className="space-y-1.5 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <dt className="sr-only">Location</dt>
+            <MapPin className="size-4 shrink-0" aria-hidden="true" />
+            <dd>{opportunity.location}</dd>
+          </div>
+          <div className="flex items-center gap-2">
+            <dt className="sr-only">Deadline</dt>
+            <CalendarDays className="size-4 shrink-0" aria-hidden="true" />
+            <dd>{opportunity.deadline}</dd>
+          </div>
+        </dl>
+      </CardContent>
+      <CardFooter className="mt-auto">
+        <a
+          href={opportunity.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-sm text-sm font-semibold underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          View opportunity
+          <ArrowUpRight className="size-4" aria-hidden="true" />
+        </a>
+      </CardFooter>
+    </Card>
   );
 }

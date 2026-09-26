@@ -1,59 +1,98 @@
-import { siteConfig } from "@/config/site";
-import type { Service } from "@/types";
+import {
+  Building2,
+  Code2,
+  Globe,
+  Layers,
+  Sparkles,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react";
+
+export type Service = {
+  id: string;
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  features: string[];
+};
 
 export const services: Service[] = [
   {
-    icon: "Globe",
+    id: "web-development",
+    icon: Globe,
     title: "Web Development",
     description:
-      "Conversion-focused marketing sites, product platforms, and content experiences built for speed and credibility.",
-    features: ["App Router websites", "Landing pages", "CMS-ready architecture"],
-    ctaLabel: "Talk to NEXUS",
-    ctaHref: `mailto:${siteConfig.email}?subject=Web%20Development%20with%20NEXUS`,
+      "Fast, modern websites and web applications engineered for performance, accessibility and growth.",
+    features: [
+      "Marketing sites & landing pages",
+      "Web applications & dashboards",
+      "E-commerce storefronts",
+      "Performance & SEO optimization",
+    ],
   },
   {
-    icon: "BriefcaseBusiness",
+    id: "business-systems",
+    icon: Building2,
     title: "Business Systems",
     description:
-      "Internal tools and digital workflows that help teams organize operations, reporting, and service delivery.",
-    features: ["Operations dashboards", "Process design", "Workflow mapping"],
-    ctaLabel: "Discuss your system",
-    ctaHref: `mailto:${siteConfig.email}?subject=Business%20Systems%20with%20NEXUS`,
+      "Digital systems that organize how your business runs — from operations and inventory to reporting.",
+    features: [
+      "Operations & workflow systems",
+      "Inventory & sales management",
+      "Reporting & analytics dashboards",
+      "Team & role management",
+    ],
   },
   {
-    icon: "Layers3",
-    title: "SaaS",
+    id: "saas",
+    icon: Layers,
+    title: "SaaS Products",
     description:
-      "Scalable software-as-a-service product design and frontends that are ready to connect to future backend services.",
-    features: ["MVP architecture", "Multi-page UX", "Upgrade-ready structure"],
-    ctaLabel: "Plan a SaaS build",
-    ctaHref: `mailto:${siteConfig.email}?subject=SaaS%20Planning%20with%20NEXUS`,
+      "Product design and engineering for software-as-a-service — from first prototype to a scalable platform.",
+    features: [
+      "MVP design & development",
+      "Subscription-ready architecture",
+      "Multi-tenant foundations",
+      "Iteration & product analytics",
+    ],
   },
   {
-    icon: "Workflow",
+    id: "automation",
+    icon: Workflow,
     title: "Automation",
     description:
-      "Automated customer journeys, notifications, and productivity systems that remove repetitive manual work.",
-    features: ["Workflow automation", "No-code integrations", "Team productivity systems"],
-    ctaLabel: "Explore automation",
-    ctaHref: `mailto:${siteConfig.email}?subject=Automation%20with%20NEXUS`,
+      "Remove repetitive manual work by connecting your tools and automating the processes behind them.",
+    features: [
+      "Workflow & process automation",
+      "Tool & API integrations",
+      "Automated notifications & reports",
+      "Data pipelines & syncing",
+    ],
   },
   {
-    icon: "Sparkles",
+    id: "ai-solutions",
+    icon: Sparkles,
     title: "AI Solutions",
     description:
-      "Practical AI-enabled interfaces, prompt workflows, and experimentation that make advanced tools more accessible.",
-    features: ["AI-first UX", "Prompt workflows", "AI adoption guidance"],
-    ctaLabel: "Design an AI solution",
-    ctaHref: `mailto:${siteConfig.email}?subject=AI%20Solutions%20with%20NEXUS`,
+      "Practical AI features embedded in your product or workflow — assistants, search, and content intelligence.",
+    features: [
+      "AI assistants & chat interfaces",
+      "Knowledge search over your data",
+      "Content generation workflows",
+      "AI strategy & tool selection",
+    ],
   },
   {
-    icon: "Cpu",
+    id: "custom-software",
+    icon: Code2,
     title: "Custom Software",
     description:
-      "Purpose-built digital products for organizations, startups, and initiatives solving local or global challenges.",
-    features: ["Custom product strategy", "Component systems", "Future backend compatibility"],
-    ctaLabel: "Start a custom project",
-    ctaHref: `mailto:${siteConfig.email}?subject=Custom%20Software%20with%20NEXUS`,
+      "Purpose-built software for problems off-the-shelf tools can't solve, designed around how you work.",
+    features: [
+      "Discovery & technical scoping",
+      "Custom application development",
+      "Legacy system modernization",
+      "Long-term support & evolution",
+    ],
   },
 ];

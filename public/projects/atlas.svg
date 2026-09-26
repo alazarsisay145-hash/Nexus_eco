@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Abstract artwork for Atlas">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <rect width="800" height="450" fill="#F7F8F6" opacity="0.5"/>
+  <g transform="translate(400 225)">
+    <circle r="150" fill="none" stroke="#0B0D10" stroke-opacity="0.15" stroke-width="1.5"/>
+    <ellipse rx="150" ry="52" fill="none" stroke="#0B0D10" stroke-opacity="0.35" stroke-width="1.5"/>
+    <ellipse rx="150" ry="52" transform="rotate(60)" fill="none" stroke="#0B0D10" stroke-opacity="0.35" stroke-width="1.5"/>
+    <ellipse rx="150" ry="52" transform="rotate(-60)" fill="none" stroke="#0B0D10" stroke-opacity="0.35" stroke-width="1.5"/>
+    <circle r="34" fill="#0B0D10"/>
+    <circle r="12" fill="#7CFF6B"/>
+    <circle cx="150" cy="0" r="9" fill="#7CFF6B"/>
+    <circle cx="-75" cy="-45" r="7" fill="#DFFFD8" stroke="#0B0D10" stroke-width="1.5"/>
+    <circle cx="-75" cy="45" r="7" fill="#0B0D10"/>
+  </g>
+</svg>

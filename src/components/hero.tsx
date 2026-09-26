@@ -1,106 +1,80 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import * as React from "react";
 
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Container } from "@/components/container";
+import { cn } from "@/lib/utils";
 
+type HeroProps = {
+  eyebrow?: string;
+  title: React.ReactNode;
+  description?: string;
+  align?: "center" | "left";
+  children?: React.ReactNode;
+  className?: string;
+};
+
+/**
+ * Page hero used across interior pages. The home page composes its own
+ * larger hero on top of the same visual language.
+ */
 export function Hero({
   eyebrow,
   title,
   description,
-  primaryLabel,
-  primaryHref,
-  secondaryLabel,
-  secondaryHref,
-  stats,
-}: {
-  eyebrow?: string;
-  title: string;
-  description: string;
-  primaryLabel: string;
-  primaryHref: string;
-  secondaryLabel?: string;
-  secondaryHref?: string;
-  stats?: { value: string; label: string }[];
-}) {
-  const isPrimaryExternal = primaryHref.startsWith("http") || primaryHref.startsWith("mailto:");
-  const isSecondaryExternal =
-    secondaryHref?.startsWith("http") || secondaryHref?.startsWith("mailto:");
-
+  align = "center",
+  children,
+  className,
+}: HeroProps) {
   return (
-    <section className="relative overflow-hidden border-b border-white/[0.08]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(124,255,107,0.22),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(47,34,255,0.18),_transparent_28%),linear-gradient(180deg,rgba(7,17,31,0.18)_0%,rgba(7,17,31,0.72)_100%)]" />
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-28">
-        <div>
-          {eyebrow ? (
-            <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-[#7CFF6B] uppercase">{eyebrow}</p>
-          ) : null}
-          <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">{description}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild variant="default" size="lg">
-              {isPrimaryExternal ? (
-                <a
-                  href={primaryHref}
-                  target={primaryHref.startsWith("mailto:") ? undefined : "_blank"}
-                  rel={primaryHref.startsWith("mailto:") ? undefined : "noreferrer"}
-                >
-                  {primaryLabel}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
-              ) : (
-                <Link href={primaryHref}>
-                  {primaryLabel}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              )}
-            </Button>
-            {secondaryLabel && secondaryHref ? (
-              <Button asChild variant="outline" size="lg" className="border-white/12 bg-white/5 text-white hover:bg-white/10 hover:text-white">
-                {isSecondaryExternal ? (
-                  <a
-                    href={secondaryHref}
-                    target={secondaryHref.startsWith("mailto:") ? undefined : "_blank"}
-                    rel={secondaryHref.startsWith("mailto:") ? undefined : "noreferrer"}
-                  >
-                    {secondaryLabel}
-                  </a>
-                ) : (
-                  <Link href={secondaryHref}>{secondaryLabel}</Link>
-                )}
-              </Button>
-            ) : null}
+    <section className={cn("relative overflow-hidden border-b", className)}>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(circle,#0b0d10_1px,transparent_1px)] [background-size:26px_26px] opacity-[0.05]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -top-32 left-1/2 h-72 w-[36rem] -translate-x-1/2 rounded-full bg-brand-soft blur-3xl"
+      />
+      <Container
+        className={cn(
+          "relative py-16 sm:py-20 lg:py-24",
+          align === "center" && "flex flex-col items-center text-center"
+        )}
+      >
+        {eyebrow ? (
+          <Badge variant="soft" className="mb-5 px-3 py-1 text-xs font-semibold">
+            {eyebrow}
+          </Badge>
+        ) : null}
+        <h1
+          className={cn(
+            "max-w-3xl font-display text-4xl font-extrabold tracking-tight text-balance sm:text-5xl",
+            align === "center" && "mx-auto"
+          )}
+        >
+          {title}
+        </h1>
+        {description ? (
+          <p
+            className={cn(
+              "mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground",
+              align === "center" && "mx-auto"
+            )}
+          >
+            {description}
+          </p>
+        ) : null}
+        {children ? (
+          <div
+            className={cn(
+              "mt-8 flex flex-wrap gap-3",
+              align === "center" && "justify-center"
+            )}
+          >
+            {children}
           </div>
-        </div>
-        <div className="glass-panel section-glow grid gap-4 p-6 sm:p-8">
-          {stats?.length ? (
-            <div className="grid gap-4 sm:grid-cols-3">
-              {stats.map((stat) => (
-                <div key={stat.label} className="glass-panel-soft p-5">
-                  <p className="text-2xl font-semibold text-white">{stat.value}</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          ) : null}
-          <div className="glass-panel-soft grid gap-4 border border-dashed border-white/12 p-6">
-            <p className="text-sm font-semibold tracking-[0.24em] text-[#7CFF6B] uppercase">Connected ecosystem</p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                "Software solutions designed for growth",
-                "Accessible AI tools with practical guidance",
-                "Community spaces for developers and collaborators",
-                "Learning pathways and real-world opportunities",
-              ].map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-[#081526]/80 p-4 text-sm leading-7 text-slate-300">
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+        ) : null}
+      </Container>
     </section>
   );
 }

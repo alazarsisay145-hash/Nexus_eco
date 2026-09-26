@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Abstract artwork for NEXUS Learn">
+  <rect width="800" height="450" fill="#FFFFFF"/>
+  <rect x="0" y="0" width="800" height="450" fill="#F7F8F6" opacity="0.6"/>
+  <g>
+    <rect x="150" y="290" width="110" height="70" rx="10" fill="#DFFFD8"/>
+    <rect x="290" y="240" width="110" height="120" rx="10" fill="#0B0D10"/>
+    <rect x="430" y="180" width="110" height="180" rx="10" fill="#DFFFD8"/>
+    <rect x="570" y="110" width="110" height="250" rx="10" fill="#7CFF6B"/>
+  </g>
+  <path d="M175 250 C300 190 480 130 640 70" stroke="#0B0D10" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="1 12"/>
+  <path d="M614 58 L648 66 L626 92 Z" fill="#0B0D10"/>
+</svg>

@@ -1,74 +1,146 @@
-import type { Opportunity } from "@/types";
+export type OpportunityType =
+  | "Job"
+  | "Internship"
+  | "Freelance"
+  | "Hackathon"
+  | "Scholarship"
+  | "Event"
+  | "Program";
 
+export type Opportunity = {
+  id: string;
+  type: OpportunityType;
+  title: string;
+  organization: string;
+  location: string;
+  deadline: string;
+  description: string;
+  url: string;
+};
+
+export const opportunityTypes: OpportunityType[] = [
+  "Job",
+  "Internship",
+  "Freelance",
+  "Hackathon",
+  "Scholarship",
+  "Event",
+  "Program",
+];
+
+/**
+ * Sample opportunity listings. Update this file to publish new opportunities —
+ * cards on the site render directly from this data.
+ */
 export const opportunities: Opportunity[] = [
   {
-    category: "Jobs",
-    title: "Junior Frontend Developer Roles",
-    organization: "LinkedIn Jobs",
-    location: "Remote / Global",
-    deadline: "Rolling",
+    id: "gsoc",
+    type: "Program",
+    title: "Google Summer of Code",
+    organization: "Google Open Source",
+    location: "Remote · Global",
+    deadline: "Applications open annually in March",
     description:
-      "Browse current entry-level frontend openings and use them as a benchmark for portfolio and skill preparation.",
-    href: "https://www.linkedin.com/jobs/front-end-developer-jobs",
+      "A global program that pays new contributors to work on open-source projects with mentoring organizations over the summer.",
+    url: "https://summerofcode.withgoogle.com",
   },
   {
-    category: "Internships",
-    title: "Product and Engineering Internship Search",
-    organization: "LinkedIn",
-    location: "Hybrid / Global",
-    deadline: "Updated weekly",
+    id: "a2sv",
+    type: "Program",
+    title: "A2SV Software Engineering Training",
+    organization: "Africa to Silicon Valley",
+    location: "Addis Ababa & Remote",
+    deadline: "Annual cohorts — applications each fall",
     description:
-      "A practical shortlist for students seeking structured internship pipelines in software, design, and product.",
-    href: "https://www.linkedin.com/jobs/internship-jobs",
+      "A free, intensive training program preparing high-potential African students for careers at world-class tech companies.",
+    url: "https://a2sv.org",
   },
   {
-    category: "Freelance",
-    title: "Freelance Web Projects",
-    organization: "Upwork",
-    location: "Remote",
-    deadline: "Rolling",
+    id: "nasa-space-apps",
+    type: "Hackathon",
+    title: "NASA Space Apps Challenge",
+    organization: "NASA",
+    location: "Global · Local hubs & virtual",
+    deadline: "Held every October",
     description:
-      "Curated freelance opportunities for developers and designers building client-facing experience and income streams.",
-    href: "https://www.upwork.com/freelance-jobs/web-development/",
+      "The world's largest annual hackathon — build open-source solutions to real challenges using NASA's open data.",
+    url: "https://www.spaceappschallenge.org",
   },
   {
-    category: "Hackathons",
-    title: "Global Hackathon Tracker",
+    id: "devpost-hackathons",
+    type: "Hackathon",
+    title: "Online Hackathons on Devpost",
     organization: "Devpost",
-    location: "Online / In-person",
-    deadline: "Varies by event",
+    location: "Remote · Global",
+    deadline: "Rolling — new hackathons weekly",
     description:
-      "Join hackathons to build with others, test ideas quickly, and create momentum around your portfolio.",
-    href: "https://devpost.com/hackathons",
+      "A continuously updated catalog of online hackathons with cash prizes, open to students and professionals worldwide.",
+    url: "https://devpost.com/hackathons",
   },
   {
-    category: "Scholarships",
-    title: "Digital Skills Scholarship Pathways",
-    organization: "Coursera for Campus",
-    location: "Online",
-    deadline: "Program-specific",
+    id: "mlh-season",
+    type: "Event",
+    title: "Major League Hacking Season",
+    organization: "MLH",
+    location: "Global · In-person & digital",
+    deadline: "Events year-round",
     description:
-      "Explore scholarship-backed learning options that can help reduce barriers to technology education.",
-    href: "https://www.coursera.org/campus",
+      "Official student hackathon league with weekend events where you learn, build and meet other student developers.",
+    url: "https://mlh.io",
   },
   {
-    category: "Events",
-    title: "Tech Event Discovery",
-    organization: "Sessionize",
-    location: "Global",
-    deadline: "Ongoing",
+    id: "mastercard-scholars",
+    type: "Scholarship",
+    title: "Mastercard Foundation Scholars Program",
+    organization: "Mastercard Foundation",
+    location: "Partner universities · Africa & global",
+    deadline: "Varies by partner university",
     description:
-      "Find conferences, community meetups, and calls for speakers that expand visibility and professional networks.",
-    href: "https://sessionize.com/",
+      "Comprehensive scholarships for academically talented young people in Africa, covering tuition and leadership development.",
+    url: "https://mastercardfdn.org/en/what-we-do/our-programs/mastercard-foundation-scholars-program/",
   },
   {
-    category: "Programs",
-    title: "Career Acceleration Programs",
-    organization: "ALX",
-    location: "Remote / Africa",
-    deadline: "Cohort-based",
+    id: "github-education",
+    type: "Program",
+    title: "GitHub Student Developer Pack",
+    organization: "GitHub Education",
+    location: "Remote · Global",
+    deadline: "Rolling",
     description:
-      "Structured programs for talent development, entrepreneurship, and practical pathways into digital careers.",
-    href: "https://www.alxafrica.com/",
+      "Free access to dozens of professional developer tools, cloud credits and learning resources for verified students.",
+    url: "https://education.github.com/pack",
+  },
+  {
+    id: "zindi-competitions",
+    type: "Freelance",
+    title: "Data Science Competitions & Gigs",
+    organization: "Zindi Africa",
+    location: "Remote · Africa-focused",
+    deadline: "Rolling — new challenges monthly",
+    description:
+      "Paid machine-learning competitions and short-term data gigs connecting African data scientists with real problems.",
+    url: "https://zindi.africa",
+  },
+  {
+    id: "outreachy",
+    type: "Internship",
+    title: "Outreachy Open Source Internships",
+    organization: "Outreachy",
+    location: "Remote · Global",
+    deadline: "Two cohorts per year (Feb & Sep)",
+    description:
+      "Paid, remote internships in open source for people from groups underrepresented in tech — no prior experience required.",
+    url: "https://www.outreachy.org",
+  },
+  {
+    id: "remote-junior-roles",
+    type: "Job",
+    title: "Remote Junior Developer Roles",
+    organization: "Wellfound (AngelList Talent)",
+    location: "Remote · Global startups",
+    deadline: "Rolling",
+    description:
+      "Startup job board with thousands of engineering roles — filter for remote, junior and internship positions.",
+    url: "https://wellfound.com",
   },
 ];

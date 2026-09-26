@@ -1,63 +1,84 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import localFont from "next/font/local";
 
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
-import { absoluteUrl } from "@/lib/metadata";
 
-import "@fontsource/inter/index.css";
 import "./globals.css";
+
+const inter = localFont({
+  src: "../fonts/inter-latin-wght-normal.woff2",
+  variable: "--font-inter",
+  weight: "100 900",
+  display: "swap",
+});
+
+const manrope = localFont({
+  src: "../fonts/manrope-latin-wght-normal.woff2",
+  variable: "--font-manrope",
+  weight: "200 800",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} | ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: [
+    "NEXUS",
+    "technology ecosystem",
+    "software solutions",
+    "AI access",
+    "developer community",
+    "tech education",
+    "opportunities",
+    "youth in tech",
+  ],
   openGraph: {
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
     type: "website",
+    locale: "en_US",
     url: siteConfig.url,
-    images: [
-      {
-        url: absoluteUrl("/opengraph-image"),
-        width: 1200,
-        height: 630,
-        alt: `${siteConfig.name} Open Graph image`,
-      },
-    ],
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | ${siteConfig.tagline}`,
+    title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    images: [absoluteUrl("/twitter-image")],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body className="font-sans text-white antialiased">
+    <html
+      lang="en"
+      className={`${inter.variable} ${manrope.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col font-sans">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-[#7CFF6B] focus:px-4 focus:py-2 focus:text-[#07111F]"
+          className="sr-only z-50 rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
         >
-          Skip to content
+          Skip to main content
         </a>
-        <div className="page-shell page-grid min-h-screen">
-          <Navbar />
-          <main id="main-content">{children}</main>
-          <Footer />
-        </div>
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

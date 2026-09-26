@@ -1,30 +1,47 @@
-import { ReactNode } from "react";
+import * as React from "react";
 
-import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+
+type SectionHeaderProps = {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  align?: "center" | "left";
+  className?: string;
+};
 
 export function SectionHeader({
   eyebrow,
   title,
   description,
   align = "left",
-  children,
-}: {
-  eyebrow?: string;
-  title: string;
-  description: string;
-  align?: "left" | "center";
-  children?: ReactNode;
-}) {
+  className,
+}: SectionHeaderProps) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+    <div
+      className={cn(
+        "max-w-2xl",
+        align === "center" && "mx-auto text-center",
+        className
+      )}
+    >
       {eyebrow ? (
-        <Badge variant="accent" className="mb-4">
+        <p className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+          <span
+            aria-hidden="true"
+            className="mr-2 inline-block size-2 rounded-full bg-brand align-baseline"
+          />
           {eyebrow}
-        </Badge>
+        </p>
       ) : null}
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
-      <p className="mt-4 text-base leading-8 text-slate-300 sm:text-lg">{description}</p>
-      {children ? <div className="mt-5">{children}</div> : null}
+      <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
+        {title}
+      </h2>
+      {description ? (
+        <p className="mt-4 text-base leading-relaxed text-pretty text-muted-foreground sm:text-lg">
+          {description}
+        </p>
+      ) : null}
     </div>
   );
 }

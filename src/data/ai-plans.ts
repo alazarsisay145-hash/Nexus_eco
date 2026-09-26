@@ -1,55 +1,68 @@
-import { siteConfig } from "@/config/site";
-import type { AIPlan } from "@/types";
+/**
+ * AI Access plan data.
+ *
+ * Plans are defined once here and rendered by <AIPlanCard />. Edit prices,
+ * features or plan names in this file only — nothing is hard-coded in
+ * components.
+ */
+export type AIPlan = {
+  id: string;
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+  ctaLabel: string;
+};
 
 export const aiPlans: AIPlan[] = [
   {
-    name: "Starter Access",
-    audience: "Students and curious beginners",
-    price: "$12",
-    cadence: "/month",
+    id: "starter",
+    name: "Starter",
+    price: "$5",
+    period: "per month",
     description:
-      "A simple starting point for guided AI usage, practical tools, and beginner-friendly onboarding.",
+      "For students and first-time users who want reliable access to leading AI tools.",
     features: [
-      "Access guidance for core AI tools",
-      "Monthly onboarding session",
-      "Prompt starter packs for study and research",
-      "Community support pathway",
+      "Access to leading AI chat models",
+      "Standard daily usage limits",
+      "Community support on Telegram",
+      "Getting-started prompt guides",
     ],
-    ctaLabel: "Get AI Access",
-    ctaHref: siteConfig.aiAccessUrl,
+    ctaLabel: "Get Starter Access",
   },
   {
-    name: "Builder Access",
-    audience: "Developers, creators, and founders",
-    price: "$29",
-    cadence: "/month",
+    id: "plus",
+    name: "Plus",
+    price: "$10",
+    period: "per month",
     description:
-      "For people actively building products, portfolios, and experiments with AI woven into their workflow.",
-    highlight: "Most popular",
-    featured: true,
+      "For builders and creators who use AI every day for study, work and projects.",
     features: [
-      "Everything in Starter Access",
-      "Curated tool stack recommendations",
-      "Productivity and coding workflows",
-      "Priority Q&A and resource drops",
+      "Everything in Starter",
+      "Premium models & image generation",
+      "Higher usage limits",
+      "Priority support",
+      "Early access to new tools",
     ],
-    ctaLabel: "Get AI Access",
-    ctaHref: siteConfig.aiAccessUrl,
+    popular: true,
+    ctaLabel: "Get Plus Access",
   },
   {
-    name: "Team Access",
-    audience: "Small teams and innovation programs",
-    price: "$99",
-    cadence: "/month",
+    id: "pro",
+    name: "Pro",
+    price: "$18",
+    period: "per month",
     description:
-      "Shared AI enablement for organizations, programs, or campus initiatives that want structured adoption.",
+      "For professionals and teams who depend on AI for serious daily output.",
     features: [
-      "Multi-seat enablement guidance",
-      "AI policy and workflow templates",
-      "Tailored onboarding for team use cases",
-      "Quarterly optimization review",
+      "Everything in Plus",
+      "Highest usage limits",
+      "Advanced & specialized models",
+      "Team onboarding assistance",
+      "Direct support channel",
     ],
-    ctaLabel: "Get AI Access",
-    ctaHref: siteConfig.aiAccessUrl,
+    ctaLabel: "Get Pro Access",
   },
 ];

@@ -1,58 +1,75 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
+import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
-export function CTASection({
-  title,
-  description,
-  primaryLabel,
-  primaryHref,
-  secondaryLabel,
-  secondaryHref,
-}: {
-  title: string;
-  description: string;
-  primaryLabel: string;
-  primaryHref: string;
+type CTASectionProps = {
+  title?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  primaryExternal?: boolean;
   secondaryLabel?: string;
   secondaryHref?: string;
-}) {
-  const isPrimaryExternal = primaryHref.startsWith("http") || primaryHref.startsWith("mailto:");
-  const isSecondaryExternal = secondaryHref?.startsWith("http") || secondaryHref?.startsWith("mailto:");
+};
 
+export function CTASection({
+  title = `Ready to build with ${siteConfig.name}?`,
+  description = "Join a growing ecosystem of young builders — or bring us your next project and let's create something exceptional together.",
+  primaryLabel = `Join ${siteConfig.name}`,
+  primaryHref = siteConfig.communityUrl,
+  primaryExternal = true,
+  secondaryLabel = "Contact Us",
+  secondaryHref = "/contact",
+}: CTASectionProps) {
   return (
-    <section className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="section-glow mx-auto max-w-7xl rounded-[2rem] border border-white/10 bg-[#06101D]/90 px-6 py-12 text-white shadow-[0_28px_80px_rgba(0,0,0,0.28)] sm:px-10 lg:px-12 lg:py-14">
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <p className="text-sm font-semibold tracking-[0.24em] text-[#7CFF6B] uppercase">Final CTA</p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-white/72 sm:text-lg">{description}</p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <Button asChild variant="accent" size="lg">
-              {isPrimaryExternal ? (
-                <a href={primaryHref} target={primaryHref.startsWith("mailto:") ? undefined : "_blank"} rel={primaryHref.startsWith("mailto:") ? undefined : "noreferrer"}>
-                  {primaryLabel}
-                </a>
-              ) : (
-                <Link href={primaryHref}>{primaryLabel}</Link>
-              )}
-            </Button>
-            {secondaryLabel && secondaryHref ? (
-              <Button asChild variant="outline" size="lg" className="border-white/20 bg-transparent text-white hover:bg-white/10 hover:text-white">
-                {isSecondaryExternal ? (
-                  <a href={secondaryHref} target={secondaryHref.startsWith("mailto:") ? undefined : "_blank"} rel={secondaryHref.startsWith("mailto:") ? undefined : "noreferrer"}>
-                    {secondaryLabel}
+    <section className="py-16 sm:py-20">
+      <Container>
+        <div className="relative overflow-hidden rounded-3xl bg-ink px-6 py-14 text-center sm:px-12 sm:py-16">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(circle,#7cff6b_1px,transparent_1px)] [background-size:26px_26px] opacity-[0.08]"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-28 left-1/2 h-56 w-[30rem] -translate-x-1/2 rounded-full bg-brand/15 blur-3xl"
+          />
+          <div className="relative">
+            <h2 className="mx-auto max-w-2xl font-display text-3xl font-extrabold tracking-tight text-balance text-white sm:text-4xl">
+              {title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-pretty text-white/70">
+              {description}
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Button
+                asChild
+                variant="brand"
+                size="lg"
+                className="focus-visible:ring-brand focus-visible:ring-offset-ink"
+              >
+                {primaryExternal ? (
+                  <a
+                    href={primaryHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {primaryLabel}
+                    <ArrowUpRight aria-hidden="true" />
                   </a>
                 ) : (
-                  <Link href={secondaryHref}>{secondaryLabel}</Link>
+                  <Link href={primaryHref}>{primaryLabel}</Link>
                 )}
               </Button>
-            ) : null}
+              <Button asChild variant="outline-light" size="lg">
+                <Link href={secondaryHref}>{secondaryLabel}</Link>
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -1,43 +1,38 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/config/site";
 import { Logo } from "@/components/logo";
+import { Container } from "@/components/container";
+import { MainNav } from "@/components/main-nav";
 import { MobileMenu } from "@/components/mobile-menu";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-[#07111F]/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-sm">
+      <Container className="flex h-16 items-center justify-between gap-4">
         <Logo />
-        <nav aria-label="Primary navigation" className="hidden items-center gap-6 md:flex">
-          {siteConfig.primaryNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={[
-                "rounded-full px-3 py-2 text-sm font-medium transition-all",
-                item.href === "/ai-access"
-                  ? "bg-white/10 text-white shadow-[0_12px_30px_rgba(124,255,107,0.12)] hover:bg-white/15"
-                  : "text-slate-300 hover:bg-white/10 hover:text-white",
-              ].join(" ")}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-        <div className="hidden items-center gap-3 md:flex">
-          <Button asChild variant="outline" className="border-white/12 bg-white/5 text-white hover:bg-white/10 hover:text-white">
+        <MainNav />
+        <div className="flex items-center gap-2">
+          <Button
+            asChild
+            variant="ghost"
+            className="hidden text-muted-foreground sm:inline-flex"
+          >
             <Link href="/contact">Contact Us</Link>
           </Button>
-          <Button asChild variant="accent">
-            <a href={siteConfig.communityUrl} target="_blank" rel="noreferrer">
-              Join NEXUS
+          <Button asChild variant="brand">
+            <a
+              href={siteConfig.communityUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join {siteConfig.name}
             </a>
           </Button>
+          <MobileMenu />
         </div>
-        <MobileMenu />
-      </div>
+      </Container>
     </header>
   );
 }
